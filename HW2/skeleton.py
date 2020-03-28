@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import intervals
 from HW2.intervals import find_best_interval
 
+A1 = [(0, 0.2), (0.4, 0.6), (0.8, 1)]
+A0 = [(0.2, 0.4), (0.6, 0.8)]
+
 
 class Assignment2(object):
     """Assignment 2 skeleton.
@@ -27,10 +30,11 @@ class Assignment2(object):
         x.sort()
         res = np.zeros((m, 2))
 
-        def p(x_i):
+        def p(xi):
             r = np.random.rand()
-            if (0 < x_i < 0.2) or (0.4 < x_i < 0.6) or (0.8 < x_i < 1):
-                return r < 0.8
+            for interval in A1:
+                if interval[0] < xi < interval[1]:
+                    return r < 0.8
             return r < 0.1
 
         for i in range(m):
@@ -47,16 +51,11 @@ class Assignment2(object):
         Returns: None.
         """
         sample = self.sample_from_D(m)
-        model = self.get_model(sample, k=k)
+        model = get_model(sample, k=k)
 
         # Note: I chose to plot the intervals as colors
         # red dot = x is in one of the bets_intervals
-        colors = ['blue']*m
-        for i in range(m):
-            xi = float(sample[:, 0][i])
-            for interval in model:
-                if interval[0] < xi < interval[1]:
-                    colors[i] = 'red'
+        colors = ['blue' if i else 'red' for i in predict(sample, model)]
 
         plt.scatter(x=sample[:, 0], y=sample[:, 1], c=colors)
         plt.ylim(-0.1, 1.1)
@@ -65,6 +64,7 @@ class Assignment2(object):
         plt.gca().xaxis.grid(True)
 
         # plt.show()  # TODO: REMOVE
+        plt.close()
 
     def experiment_m_range_erm(self, m_first, m_last, step, k, T):
         """Runs the ERM algorithm.
@@ -87,20 +87,27 @@ class Assignment2(object):
             emp_errors, true_errors = [], []
             for t in range(30):
                 sample = self.sample_from_D(m)
-                model = self.get_model(sample, k=k)
-                emp_errors.append(self.empirical_error(sample, model))
-                true_errors.append(self.true_error(model))
-                print(m, true_errors[-1])
-            print('----------------------------')
-            res[i] = [m, np.array(emp_errors).mean(), np.array(true_errors).mean()]
+                model = get_model(sample, k=k)
+                emp_errors.append(empirical_error(sample, model))
+                true_errors.append(true_error(model))
+            res[i] = [
+                m,
+                np.array(true_errors).mean(),
+                np.array(emp_errors).mean()
+            ]
 
-        # print(res)
-        plt.close()
-        plt.plot(res[:, 0], res[:, 2])
+        fig, ax1 = plt.subplots()
+
+        ax1.set_xlabel('m')
+        ax1.set_ylabel('True Error (m)', color='blue')
+        ax1.plot(res[:, 0], res[:, 1], color='blue')
+
+        ax2 = ax1.twinx()
+        ax2.set_ylabel('Empirical Error', color='red')
+        ax2.plot(res[:, 0], res[:, 2], color='red')
+
         plt.show()
         return res
-
-
 
     def experiment_k_range_erm(self, m, k_first, k_last, step):
         """Finds the best hypothesis for k= 1,2,...,10.
@@ -140,54 +147,77 @@ class Assignment2(object):
         # TODO: Implement me
         pass
 
-    #################################
-    # Place for additional methods
-    def get_model(self, sample, k):
-        return find_best_interval(xs=sample[:, 0], ys=sample[:, 1], k=k)[0]
+#################################
+# Place for additional methods
 
-    def empirical_error(self, sample, model):
-        return 0.5
 
-    def true_error(self, model):
-        reverse_model = self.model_compliment(model)
-        h0y0 = self.intervals_intersections(model, [(0.2, 0.4), (0.6, 0.8)])
-        h0y1 = self.intervals_intersections(model, [(0, 0.2), (0.4, 0.6), (0.6, 0.8)])
-        h1y0 = self.intervals_intersections(reverse_model, [(0.2, 0.4), (0.6, 0.8)])
-        h1y1 = self.intervals_intersections(reverse_model, [(0, 0.2), (0.4, 0.6), (0.6, 0.8)])
-        ph1 = sum([i[1] - i[0] for i in model])
+def get_model(sample, k):
+    return find_best_interval(xs=sample[:, 0], ys=sample[:, 1], k=k)[0]
 
-        pY0h0 = 0.1 * sum([i[1] - i[0] for i in h0y1]) + 0.9 * sum([i[1] - i[0] for i in h0y0])
-        pY1h1 = 0.8 * sum([i[1] - i[0] for i in h1y1]) + 0.2 * sum([i[1] - i[0] for i in h1y0])
-        ph0 = 1 - ph1
-        return 1 - pY1h1/ph1 - pY0h0 - ph0
 
-    def intervals_intersections(self, l1, l2):
-        """
-        :param l1: list of intervals
-        :param l2: list of intervals
-        :return: List of intersecting intervals
-        Assumption: both l1 and l2 are sorted and don't have overlapping intervals
-        """
-        res = []
-        for i1 in l1:
-            for i2 in l2:
-                if i2[0] > i1[1] or i2[1] < i1[0]:
-                    continue
-                res.append((max(i2[0], i1[0]), min(i2[1], i1[1])))
-        return res
+def empirical_error(sample, model):
+    m = len(sample[:, 0])
+    predictions = predict(sample, model)
+    sample_y = sample[:, 1]
+    error = 0
+    for i in range(m):
+        error += float(sample_y[i]) != float(predictions[i])
+    return error / m
 
-    # Returns complementing intervals
-    def model_compliment(self, model):
-        """
-        :param model: list of intervals
-        :return: complementing intervals
 
-        for example if model = [(0.2, 0.6)] then model_compliment = [(0, 0.2), (0.6, 1)]
-        """
-        padded_model = [(-1, 0)] + model + [(1, 2)]
-        return [(padded_model[i][1], padded_model[i+1][0]) for i in range(len(model)+1)]
+def true_error(model):
+    reverse_model = model_compliment(model)
+    h0a0 = intervals_intersections(reverse_model, A0)
+    h0a1 = intervals_intersections(reverse_model, A1)
+    h1a0 = intervals_intersections(model, A0)
+    h1a1 = intervals_intersections(model, A1)
 
-    #################################
+    return sum([
+        0.1 * sum([i[1] - i[0] for i in h0a0]),
+        0.9 * sum([i[1] - i[0] for i in h1a0]),
+        0.8 * sum([i[1] - i[0] for i in h0a1]),
+        0.2 * sum([i[1] - i[0] for i in h1a1])
+    ])
+
+
+def intervals_intersections( l1, l2):
+    """
+    :param l1: list of intervals
+    :param l2: list of intervals
+    :return: List of intersecting intervals
+    Assumption: both l1 and l2 are sorted and don't have overlapping intervals
+    """
+    res = []
+    for i1 in l1:
+        for i2 in l2:
+            if i2[0] > i1[1] or i2[1] < i1[0]:
+                continue
+            res.append((max(i2[0], i1[0]), min(i2[1], i1[1])))
+    return res
+
+
+# Returns complementing intervals
+def model_compliment( model):
+    """
+    :param model: list of intervals
+    :return: complementing intervals
+
+    for example if model = [(0.3, 0.5)] then model_compliment = [(0, 0.3), (0.5, 1)]
+    """
+    padded_model = [(-1, 0)] + model + [(1, 2)]
+    return [(padded_model[i][1], padded_model[i+1][0]) for i in range(len(model)+1)]
+
+
+def predict(sample, model):
+    sample_x = [float(x) for x in sample[:, 0]]
+    m = len(sample_x)
+    predictions = [0] * m
+    for i in range(m):
+        for interval in model:
+            if interval[0] < sample_x[i] < interval[1]:
+                predictions[i] = 1
+    return predictions
+#################################
 
 
 if __name__ == '__main__':
