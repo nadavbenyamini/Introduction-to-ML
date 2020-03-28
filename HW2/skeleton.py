@@ -85,17 +85,18 @@ class Assignment2(object):
         for i in range(size):
             m = m_first + i*step
             emp_errors, true_errors = [], []
-            for t in range(10):
+            for t in range(30):
                 sample = self.sample_from_D(m)
                 model = self.get_model(sample, k=k)
                 emp_errors.append(self.empirical_error(sample, model))
                 true_errors.append(self.true_error(model))
-
+                print(m, true_errors[-1])
+            print('----------------------------')
             res[i] = [m, np.array(emp_errors).mean(), np.array(true_errors).mean()]
 
-        print(res)
+        # print(res)
         plt.close()
-        plt.scatter(x=res[:, 0], y=res[:, 1])
+        plt.plot(res[:, 0], res[:, 2])
         plt.show()
         return res
 
@@ -148,7 +149,43 @@ class Assignment2(object):
         return 0.5
 
     def true_error(self, model):
-        return 0.3
+        reverse_model = self.model_compliment(model)
+        h0y0 = self.intervals_intersections(model, [(0.2, 0.4), (0.6, 0.8)])
+        h0y1 = self.intervals_intersections(model, [(0, 0.2), (0.4, 0.6), (0.6, 0.8)])
+        h1y0 = self.intervals_intersections(reverse_model, [(0.2, 0.4), (0.6, 0.8)])
+        h1y1 = self.intervals_intersections(reverse_model, [(0, 0.2), (0.4, 0.6), (0.6, 0.8)])
+        ph1 = sum([i[1] - i[0] for i in model])
+
+        pY0h0 = 0.1 * sum([i[1] - i[0] for i in h0y1]) + 0.9 * sum([i[1] - i[0] for i in h0y0])
+        pY1h1 = 0.8 * sum([i[1] - i[0] for i in h1y1]) + 0.2 * sum([i[1] - i[0] for i in h1y0])
+        ph0 = 1 - ph1
+        return 1 - pY1h1/ph1 - pY0h0 - ph0
+
+    def intervals_intersections(self, l1, l2):
+        """
+        :param l1: list of intervals
+        :param l2: list of intervals
+        :return: List of intersecting intervals
+        Assumption: both l1 and l2 are sorted and don't have overlapping intervals
+        """
+        res = []
+        for i1 in l1:
+            for i2 in l2:
+                if i2[0] > i1[1] or i2[1] < i1[0]:
+                    continue
+                res.append((max(i2[0], i1[0]), min(i2[1], i1[1])))
+        return res
+
+    # Returns complementing intervals
+    def model_compliment(self, model):
+        """
+        :param model: list of intervals
+        :return: complementing intervals
+
+        for example if model = [(0.2, 0.6)] then model_compliment = [(0, 0.2), (0.6, 1)]
+        """
+        padded_model = [(-1, 0)] + model + [(1, 2)]
+        return [(padded_model[i][1], padded_model[i+1][0]) for i in range(len(model)+1)]
 
     #################################
 
