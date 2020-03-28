@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 # TODO - Restore imports
 import intervals
-from HW2.intervals import *
+from HW2.intervals import find_best_interval
 
 
 class Assignment2(object):
@@ -47,14 +47,14 @@ class Assignment2(object):
         Returns: None.
         """
         sample = self.sample_from_D(m)
+        model = self.get_model(sample, k=k)
 
         # Note: I chose to plot the intervals as colors
         # red dot = x is in one of the bets_intervals
-        intervals = find_best_interval(xs=sample[:, 0], ys=sample[:, 1], k=k)[0]
         colors = ['blue']*m
         for i in range(m):
             xi = float(sample[:, 0][i])
-            for interval in intervals:
+            for interval in model:
                 if interval[0] < xi < interval[1]:
                     colors[i] = 'red'
 
@@ -64,7 +64,7 @@ class Assignment2(object):
         plt.yticks([-0.1 + 0.1 * i for i in range(13)])
         plt.gca().xaxis.grid(True)
 
-        plt.show()  # TODO: REMOVE
+        # plt.show()  # TODO: REMOVE
 
     def experiment_m_range_erm(self, m_first, m_last, step, k, T):
         """Runs the ERM algorithm.
@@ -80,8 +80,26 @@ class Assignment2(object):
             A two dimensional array that contains the average empirical error
             and the average true error for each m in the range accordingly.
         """
-        # TODO: Implement the loop
-        pass
+        size = (m_last - m_first) // step
+        res = np.zeros(shape=(size, 3))
+        for i in range(size):
+            m = m_first + i*step
+            emp_errors, true_errors = [], []
+            for t in range(10):
+                sample = self.sample_from_D(m)
+                model = self.get_model(sample, k=k)
+                emp_errors.append(self.empirical_error(sample, model))
+                true_errors.append(self.true_error(model))
+
+            res[i] = [m, np.array(emp_errors).mean(), np.array(true_errors).mean()]
+
+        print(res)
+        plt.close()
+        plt.scatter(x=res[:, 0], y=res[:, 1])
+        plt.show()
+        return res
+
+
 
     def experiment_k_range_erm(self, m, k_first, k_last, step):
         """Finds the best hypothesis for k= 1,2,...,10.
@@ -123,7 +141,14 @@ class Assignment2(object):
 
     #################################
     # Place for additional methods
+    def get_model(self, sample, k):
+        return find_best_interval(xs=sample[:, 0], ys=sample[:, 1], k=k)[0]
 
+    def empirical_error(self, sample, model):
+        return 0.5
+
+    def true_error(self, model):
+        return 0.3
 
     #################################
 
