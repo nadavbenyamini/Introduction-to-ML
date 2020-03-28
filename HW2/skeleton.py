@@ -10,6 +10,8 @@ import intervals
 from HW2.intervals import find_best_interval
 
 A1 = [(0, 0.2), (0.4, 0.6), (0.8, 1)]
+P1 = 0.8
+P0 = 0.1
 A0 = [(0.2, 0.4), (0.6, 0.8)]
 
 
@@ -34,8 +36,8 @@ class Assignment2(object):
             r = np.random.rand()
             for interval in A1:
                 if interval[0] < xi < interval[1]:
-                    return r < 0.8
-            return r < 0.1
+                    return r < P1
+            return r < P0
 
         for i in range(m):
             res[i] = [x[i], p(x[i])]
@@ -63,7 +65,7 @@ class Assignment2(object):
         plt.yticks([-0.1 + 0.1 * i for i in range(13)])
         plt.gca().xaxis.grid(True)
 
-        # plt.show()  # TODO: REMOVE
+        plt.show()  # TODO: COMMENT OUT
         plt.close()
 
     def experiment_m_range_erm(self, m_first, m_last, step, k, T):
@@ -106,7 +108,8 @@ class Assignment2(object):
         ax2.set_ylabel('Empirical Error', color='red')
         ax2.plot(res[:, 0], res[:, 2], color='red')
 
-        plt.show()
+        plt.show()  # TODO: COMMENT OUT
+        plt.close()
         return res
 
     def experiment_k_range_erm(self, m, k_first, k_last, step):
@@ -119,8 +122,34 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) according to the ERM algorithm.
         """
-        # TODO: Implement the loop
-        pass
+        size = (k_last - k_first) // step
+        res = np.zeros(shape=(size, 3))
+        best_error = 1000
+        best_k = -1
+        for i in range(size):
+            k = k_first + i*step
+            sample = self.sample_from_D(m)
+            model = get_model(sample, k=k)
+            emp = empirical_error(sample, model)
+            if emp < best_error:
+                best_error = emp
+                best_k = k
+            res[i] = [k, true_error(model), emp]
+
+        fig, ax1 = plt.subplots()
+
+        ax1.set_xlabel('k')
+        ax1.set_ylabel('True Error (k)', color='blue')
+        ax1.plot(res[:, 0], res[:, 1], color='blue')
+
+        ax2 = ax1.twinx()
+        ax2.set_ylabel('Empirical Error', color='red')
+        ax2.plot(res[:, 0], res[:, 2], color='red')
+
+        plt.show()
+
+        print(best_k)
+        return best_k
 
     def experiment_k_range_srm(self, m, k_first, k_last, step):
         """Runs the experiment in (d).
@@ -173,14 +202,14 @@ def true_error(model):
     h1a1 = intervals_intersections(model, A1)
 
     return sum([
-        0.1 * sum([i[1] - i[0] for i in h0a0]),
-        0.9 * sum([i[1] - i[0] for i in h1a0]),
-        0.8 * sum([i[1] - i[0] for i in h0a1]),
-        0.2 * sum([i[1] - i[0] for i in h1a1])
+        P0 * sum([i[1] - i[0] for i in h0a0]),
+        (1-P0) * sum([i[1] - i[0] for i in h1a0]),
+        P1 * sum([i[1] - i[0] for i in h0a1]),
+        (1-P1) * sum([i[1] - i[0] for i in h1a1])
     ])
 
 
-def intervals_intersections( l1, l2):
+def intervals_intersections(l1, l2):
     """
     :param l1: list of intervals
     :param l2: list of intervals
@@ -197,7 +226,7 @@ def intervals_intersections( l1, l2):
 
 
 # Returns complementing intervals
-def model_compliment( model):
+def model_compliment(model):
     """
     :param model: list of intervals
     :return: complementing intervals
@@ -222,9 +251,9 @@ def predict(sample, model):
 
 if __name__ == '__main__':
     ass = Assignment2()
-    ass.draw_sample_intervals(100, 3)
-    ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    ass.experiment_k_range_erm(1500, 1, 10, 1)
-    ass.experiment_k_range_srm(1500, 1, 10, 1)
-    ass.cross_validation(1500, 3)
+    # ass.draw_sample_intervals(100, 3)
+    # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
+    ass.experiment_k_range_erm(300, 1, 10, 1)  # ass.experiment_k_range_erm(1500, 1, 10, 1)
+    ass.experiment_k_range_srm(100, 1, 10, 1)  # ass.experiment_k_range_srm(1500, 1, 10, 1)
+    ass.cross_validation(1500, 3)  # ass.cross_validation(1500, 3)
 
