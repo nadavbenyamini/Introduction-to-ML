@@ -13,6 +13,7 @@ A1 = [(0, 0.2), (0.4, 0.6), (0.8, 1)]
 P1 = 0.8
 P0 = 0.1
 A0 = [(0.2, 0.4), (0.6, 0.8)]
+DELTA = 0.1
 
 
 class Assignment2(object):
@@ -148,7 +149,6 @@ class Assignment2(object):
 
         plt.show()
 
-        print(best_k)
         return best_k
 
     def experiment_k_range_srm(self, m, k_first, k_last, step):
@@ -251,9 +251,9 @@ def predict(sample, model):
 
 if __name__ == '__main__':
     ass = Assignment2()
-    # ass.draw_sample_intervals(100, 3)
-    # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    ass.experiment_k_range_erm(300, 1, 10, 1)  # ass.experiment_k_range_erm(1500, 1, 10, 1)
-    ass.experiment_k_range_srm(100, 1, 10, 1)  # ass.experiment_k_range_srm(1500, 1, 10, 1)
-    ass.cross_validation(1500, 3)  # ass.cross_validation(1500, 3)
+    ass.draw_sample_intervals(100, 3)
+    ass.experiment_m_range_erm(10, 100, 5, 3, 100)
+    ass.experiment_k_range_erm(1500, 1, 10, 1)
+    ass.experiment_k_range_srm(1500, 1, 10, 1)
+    ass.cross_validation(1500, 3)
 
