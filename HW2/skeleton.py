@@ -4,7 +4,10 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+
+# TODO - Restore imports
 import intervals
+from HW2.intervals import *
 
 
 class Assignment2(object):
@@ -21,6 +24,7 @@ class Assignment2(object):
                 A two dimensional array of size m that contains the pairs where drawn from the distribution P.
         """
         x = list(np.random.random_sample(m))
+        x.sort()
         res = np.zeros((m, 2))
 
         def p(x_i):
@@ -43,12 +47,24 @@ class Assignment2(object):
         Returns: None.
         """
         sample = self.sample_from_D(m)
-        plt.scatter(x=sample[:, 0], y=sample[:, 1])
+
+        # Note: I chose to plot the intervals as colors
+        # red dot = x is in one of the bets_intervals
+        intervals = find_best_interval(xs=sample[:, 0], ys=sample[:, 1], k=k)[0]
+        colors = ['blue']*m
+        for i in range(m):
+            xi = float(sample[:, 0][i])
+            for interval in intervals:
+                if interval[0] < xi < interval[1]:
+                    colors[i] = 'red'
+
+        plt.scatter(x=sample[:, 0], y=sample[:, 1], c=colors)
         plt.ylim(-0.1, 1.1)
         plt.xlim(0, 1)
         plt.yticks([-0.1 + 0.1 * i for i in range(13)])
         plt.gca().xaxis.grid(True)
-        plt.show()
+
+        plt.show()  # TODO: REMOVE
 
     def experiment_m_range_erm(self, m_first, m_last, step, k, T):
         """Runs the ERM algorithm.
