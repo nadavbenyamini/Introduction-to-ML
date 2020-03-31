@@ -129,7 +129,7 @@ class Assignment2(object):
         res = np.zeros(shape=(size, 3))
         best_error = 1000
         best_k = -1
-        for i in range(size):
+        for i in range(size + 1):
             k = k_first + i*step
             sample = self.sample_from_D(m)
             model = get_model(sample, k=k)
@@ -142,12 +142,9 @@ class Assignment2(object):
         fig, ax1 = plt.subplots()
 
         ax1.set_xlabel('k')
-        ax1.set_ylabel('True Error (k)', color='blue')
-        ax1.plot(res[:, 0], res[:, 1], color='blue')
-
-        ax2 = ax1.twinx()
-        ax2.set_ylabel('Empirical Error', color='red')
-        ax2.plot(res[:, 0], res[:, 2], color='red')
+        ax1.plot(res[:, 0], res[:, 1], 'blue',
+                 res[:, 0], res[:, 2], 'red')
+        ax1.legend(['True Error (k)', 'Empirical Error'])
 
         plt.show()
 
@@ -164,8 +161,34 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) according to the SRM algorithm.
         """
-        # TODO: Implement the loop
-        pass
+        size = (k_last - k_first) // step
+        res = np.zeros(shape=(size, 5))
+        best_error = 1000
+        best_k = -1
+        for i in range(size + 1):
+            k = k_first + i*step
+            sample = self.sample_from_D(m)
+            model = get_model(sample, k=k)
+            emp = empirical_error(sample, model)
+            penalty = get_penalty(m, k)
+            if emp < best_error:
+                best_error = emp
+                best_k = k
+            res[i] = [k, true_error(model), emp, penalty, emp + penalty]
+
+        fig, ax1 = plt.subplots()
+
+        ax1.set_xlabel('k')
+        ax1.set_ylabel('True Error (k)', color='blue')
+        ax1.plot(res[:, 0], res[:, 1], 'blue',
+                 res[:, 0], res[:, 2], 'red',
+                 res[:, 0], res[:, 3], 'grey',
+                 res[:, 0], res[:, 4], 'green')
+
+        ax1.legend(['True Error (k)', 'Empirical Error', 'Penalty', 'Empirical Error + Penalty'])
+
+        plt.show()
+        return best_k
 
     def cross_validation(self, m, T):
         """Finds a k that gives a good test error.
@@ -248,14 +271,20 @@ def predict(sample, model):
             if interval[0] < sample_x[i] < interval[1]:
                 predictions[i] = 1
     return predictions
+
+
+def get_penalty(m, k):
+    vc_dim = 2*k  # From theoretical questions
+    return np.sqrt((1/m) * (vc_dim*np.log(m/vc_dim) + np.log(1/DELTA)))
+
 #################################
 
 
 if __name__ == '__main__':
     ass = Assignment2()
-    ass.draw_sample_intervals(100, 3)
+    # ass.draw_sample_intervals(100, 3)
     # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    # ass.experiment_k_range_erm(1500, 1, 10, 1)
-    # ass.experiment_k_range_srm(1500, 1, 10, 1)
+    ass.experiment_k_range_erm(300, 1, 10, 1)
+    ass.experiment_k_range_srm(300, 1, 10, 1)
     # ass.cross_validation(1500, 3)
 
