@@ -56,11 +56,13 @@ class Assignment2(object):
         sample = self.sample_from_D(m)
         model = get_model(sample, k=k)
 
-        # Note: I chose to plot the intervals as colors
-        # red dot = x is in one of the bets_intervals
-        colors = ['blue' if i else 'red' for i in predict(sample, model)]
+        plt.scatter(x=sample[:, 0], y=sample[:, 1])
+        # adding vertical lines for intervals
+        for i in model:
+            plt.axvline(i[0], linestyle='--', color='k')
+            plt.axvline(i[1], linestyle='--', color='k')
+            plt.axvspan(i[0], i[1], alpha=0.25, color='red')
 
-        plt.scatter(x=sample[:, 0], y=sample[:, 1], c=colors)
         plt.ylim(-0.1, 1.1)
         plt.xlim(0, 1)
         plt.yticks([-0.1 + 0.1 * i for i in range(13)])
@@ -252,8 +254,8 @@ def predict(sample, model):
 if __name__ == '__main__':
     ass = Assignment2()
     ass.draw_sample_intervals(100, 3)
-    ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    ass.experiment_k_range_erm(1500, 1, 10, 1)
-    ass.experiment_k_range_srm(1500, 1, 10, 1)
-    ass.cross_validation(1500, 3)
+    # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
+    # ass.experiment_k_range_erm(1500, 1, 10, 1)
+    # ass.experiment_k_range_srm(1500, 1, 10, 1)
+    # ass.cross_validation(1500, 3)
 
