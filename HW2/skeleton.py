@@ -12,7 +12,6 @@ from HW2.intervals import find_best_interval
 A1 = [(0, 0.2), (0.4, 0.6), (0.8, 1)]
 P1 = 0.8
 P0 = 0.1
-A0 = [(0.2, 0.4), (0.6, 0.8)]
 DELTA = 0.1
 
 
@@ -90,7 +89,7 @@ class Assignment2(object):
         for i in range(size):
             m = m_first + i*step
             emp_errors, true_errors = [], []
-            for t in range(30):
+            for t in range(T):
                 sample = self.sample_from_D(m)
                 model = get_model(sample, k=k)
                 emp_errors.append(empirical_error(sample, model))
@@ -125,11 +124,11 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) according to the ERM algorithm.
         """
-        size = (k_last - k_first) // step
+        size = 1 + (k_last - k_first) // step
         res = np.zeros(shape=(size, 3))
         best_error = 1000
         best_k = -1
-        for i in range(size + 1):
+        for i in range(size):
             k = k_first + i*step
             sample = self.sample_from_D(m)
             model = get_model(sample, k=k)
@@ -146,7 +145,7 @@ class Assignment2(object):
                  res[:, 0], res[:, 2], 'red')
         ax1.legend(['True Error (k)', 'Empirical Error'])
 
-        plt.show()
+        plt.show()  # TODO: COMMENT OUT
 
         return best_k
 
@@ -161,11 +160,11 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) according to the SRM algorithm.
         """
-        size = (k_last - k_first) // step
+        size = 1 + (k_last - k_first) // step
         res = np.zeros(shape=(size, 5))
         best_error = 1000
         best_k = -1
-        for i in range(size + 1):
+        for i in range(size):
             k = k_first + i*step
             sample = self.sample_from_D(m)
             model = get_model(sample, k=k)
@@ -179,7 +178,6 @@ class Assignment2(object):
         fig, ax1 = plt.subplots()
 
         ax1.set_xlabel('k')
-        ax1.set_ylabel('True Error (k)', color='blue')
         ax1.plot(res[:, 0], res[:, 1], 'blue',
                  res[:, 0], res[:, 2], 'red',
                  res[:, 0], res[:, 3], 'grey',
@@ -187,7 +185,7 @@ class Assignment2(object):
 
         ax1.legend(['True Error (k)', 'Empirical Error', 'Penalty', 'Empirical Error + Penalty'])
 
-        plt.show()
+        plt.show()  # TODO: COMMENT OUT
         return best_k
 
     def cross_validation(self, m, T):
@@ -198,7 +196,20 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) found by the cross validation algorithm.
         """
-        # TODO: Implement me
+        best_res = 10000
+        best_k = 0
+        for i in range(T):
+            for k in range(1, 10):
+                test_sample = self.sample_from_D(int(m * 0.2))
+                validation_sample = self.sample_from_D(int(m * 0.8))
+                model = get_model(test_sample, k=k)
+                emp = empirical_error(validation_sample, model)
+                penalty = get_penalty(m, k)
+                res = emp + penalty
+                if res <= best_res:
+                    best_res = res
+                    best_k = k
+            print('Experiment {}, best k found: {}'.format(i, best_k))
         pass
 
 #################################
@@ -221,6 +232,7 @@ def empirical_error(sample, model):
 
 def true_error(model):
     reverse_model = model_compliment(model)
+    A0 = model_compliment(A1)
     h0a0 = intervals_intersections(reverse_model, A0)
     h0a1 = intervals_intersections(reverse_model, A1)
     h1a0 = intervals_intersections(model, A0)
@@ -276,7 +288,6 @@ def predict(sample, model):
 def get_penalty(m, k):
     vc_dim = 2*k  # From theoretical questions
     return np.sqrt((1/m) * (vc_dim*np.log(m/vc_dim) + np.log(1/DELTA)))
-
 #################################
 
 
@@ -284,7 +295,7 @@ if __name__ == '__main__':
     ass = Assignment2()
     # ass.draw_sample_intervals(100, 3)
     # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    ass.experiment_k_range_erm(300, 1, 10, 1)
-    ass.experiment_k_range_srm(300, 1, 10, 1)
-    # ass.cross_validation(1500, 3)
+    # ass.experiment_k_range_erm(150, 1, 10, 1)
+    # ass.experiment_k_range_srm(150, 1, 10, 1)
+    ass.cross_validation(1500, 3)
 
