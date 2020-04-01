@@ -101,14 +101,12 @@ class Assignment2(object):
             ]
 
         fig, ax1 = plt.subplots()
+        ax1.plot(res[:, 0], res[:, 1], 'blue',
+                 res[:, 0], res[:, 2], 'red')
 
         ax1.set_xlabel('m')
-        ax1.set_ylabel('True Error (m)', color='blue')
-        ax1.plot(res[:, 0], res[:, 1], color='blue')
-
-        ax2 = ax1.twinx()
-        ax2.set_ylabel('Empirical Error', color='red')
-        ax2.plot(res[:, 0], res[:, 2], color='red')
+        ax1.set_ylabel('Error')
+        ax1.legend(['True', 'Empirical'])
 
         plt.show()  # TODO: COMMENT OUT
         plt.close()
@@ -196,12 +194,18 @@ class Assignment2(object):
 
         Returns: The best k value (an integer) found by the cross validation algorithm.
         """
-        best_res = 10000
-        best_k = 0
+        sample = self.sample_from_D(m)
+        indices = [i for i in range(m)]
+        best_k_stats = {}
         for i in range(T):
+            best_res = 10000
+            best_k = 0
+            np.random.shuffle(indices)
+            test_indices = sorted(indices[:m//5])
+            test_sample = np.array([(sample[i][0], sample[i][1]) for i in test_indices])
+            validation_indices = sorted(indices[m//5:])
+            validation_sample = np.array([(sample[i][0], sample[i][1]) for i in validation_indices])
             for k in range(1, 10):
-                test_sample = self.sample_from_D(int(m * 0.2))
-                validation_sample = self.sample_from_D(int(m * 0.8))
                 model = get_model(test_sample, k=k)
                 emp = empirical_error(validation_sample, model)
                 penalty = get_penalty(m, k)
@@ -210,7 +214,11 @@ class Assignment2(object):
                     best_res = res
                     best_k = k
             print('Experiment {}, best k found: {}'.format(i, best_k))
-        pass
+            if best_k in best_k_stats:
+                best_k_stats[best_k] += 1
+            else:
+                best_k_stats[best_k] = 1
+        return sorted(best_k_stats.items(), key=lambda stats: -1*stats[1])[0][0]
 
 #################################
 # Place for additional methods
@@ -293,9 +301,9 @@ def get_penalty(m, k):
 
 if __name__ == '__main__':
     ass = Assignment2()
-    # ass.draw_sample_intervals(100, 3)
-    # ass.experiment_m_range_erm(10, 100, 5, 3, 100)
-    # ass.experiment_k_range_erm(150, 1, 10, 1)
-    # ass.experiment_k_range_srm(150, 1, 10, 1)
+    ass.draw_sample_intervals(100, 3)
+    ass.experiment_m_range_erm(10, 100, 5, 3, 100)
+    ass.experiment_k_range_erm(1500, 1, 10, 1)
+    ass.experiment_k_range_srm(1500, 1, 10, 1)
     ass.cross_validation(1500, 3)
 
