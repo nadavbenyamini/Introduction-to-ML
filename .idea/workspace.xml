@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
-    <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1585719480120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
+    <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1585726643905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -35,8 +35,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW2/skeleton.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+            <state relative-caret-position="303">
+              <caret line="304" column="46" lean-forward="true" selection-start-line="304" selection-start-column="46" selection-end-line="304" selection-end-column="46" />
               <folding>
                 <element signature="e#98#116#0" expanded="true" />
               </folding>
@@ -47,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
+            <state relative-caret-position="-90">
+              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -86,6 +86,8 @@
       <find>cross_validation</find>
       <find>model_compliment</find>
       <find>A0</find>
+      <find>PENALTY=</find>
+      <find>TODO</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
@@ -237,7 +239,7 @@
       <workItem from="1584861538415" duration="60000" />
       <workItem from="1585384685349" duration="21163000" />
       <workItem from="1585465297274" duration="109000" />
-      <workItem from="1585664088735" duration="8574000" />
+      <workItem from="1585664088735" duration="18686000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -295,11 +297,25 @@
       <option name="project" value="LOCAL" />
       <updated>1585669201098</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Basic layout for Q6">
+      <created>1585719636286</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1585719636286</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Finished">
+      <created>1585747802150</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585747802150</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72977000" />
+    <option name="totallyTimeSpent" value="83089000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="101" width="1680" height="1050" extended-state="6" />
@@ -311,7 +327,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40704072" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40704072" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -326,7 +342,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.26409313" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.36825982" />
       <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
     </layout>
   </component>
@@ -342,7 +358,9 @@
     <MESSAGE value="Finished parts a-d" />
     <MESSAGE value="Marking intervals on grid" />
     <MESSAGE value="refactored charts + q5 ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactored charts + q5 ready" />
+    <MESSAGE value="Basic layout for Q6" />
+    <MESSAGE value="Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -379,15 +397,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="22" />
+        <state relative-caret-position="-90">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HW2/skeleton.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        <state relative-caret-position="303">
+          <caret line="304" column="46" lean-forward="true" selection-start-line="304" selection-start-column="46" selection-end-line="304" selection-end-column="46" />
           <folding>
             <element signature="e#98#116#0" expanded="true" />
           </folding>

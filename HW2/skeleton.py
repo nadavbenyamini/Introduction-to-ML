@@ -4,10 +4,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-
-# TODO - Restore imports
-import intervals
-from HW2.intervals import find_best_interval
+from .intervals import find_best_interval
 
 A1 = [(0, 0.2), (0.4, 0.6), (0.8, 1)]
 P1 = 0.8
@@ -67,7 +64,7 @@ class Assignment2(object):
         plt.yticks([-0.1 + 0.1 * i for i in range(13)])
         plt.gca().xaxis.grid(True)
 
-        plt.show()  # TODO: COMMENT OUT
+        # plt.show()
         plt.close()
 
     def experiment_m_range_erm(self, m_first, m_last, step, k, T):
@@ -108,7 +105,7 @@ class Assignment2(object):
         ax1.set_ylabel('Error')
         ax1.legend(['True', 'Empirical'])
 
-        plt.show()  # TODO: COMMENT OUT
+        # plt.show()
         plt.close()
         return res
 
@@ -143,7 +140,8 @@ class Assignment2(object):
                  res[:, 0], res[:, 2], 'red')
         ax1.legend(['True Error (k)', 'Empirical Error'])
 
-        plt.show()  # TODO: COMMENT OUT
+        # plt.show()
+        plt.close()
 
         return best_k
 
@@ -183,7 +181,8 @@ class Assignment2(object):
 
         ax1.legend(['True Error (k)', 'Empirical Error', 'Penalty', 'Empirical Error + Penalty'])
 
-        plt.show()  # TODO: COMMENT OUT
+        # plt.show()
+        plt.close()
         return best_k
 
     def cross_validation(self, m, T):
