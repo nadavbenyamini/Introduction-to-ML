@@ -44,32 +44,51 @@ def helper():
     return train_data, train_labels, validation_data, validation_labels, test_data, test_labels
 
 
+#################################
+def sign(x):
+    if x == 0:
+        return 0
+    return 1 if x > 0 else -1
+
+
 def perceptron(data, labels):
     """
     :return: nd array of shape (data.shape[1],) or (data.shape[1],1) representing the perceptron classifier
     """
     data = sklearn.preprocessing.normalize(data)
     n = len(labels)
-    w = np.zeros(n)
-    for i in range(n):
-        prediction = np.sign(np.dot(w[i], data[i]))
-        print(f'np.dot(w[i], data[i])={np.dot(w[i], data[i])}, sign={prediction}')
-        if prediction != labels[i][0]:
-            w = w + labels[i][0] * data[i]
+    m = data[0].shape[0]
+    w = np.zeros(m)
 
-#################################
+    for i in range(n):
+        dp = np.dot(w, data[i])
+        prediction = sign(dp.astype(float))
+        if np.where(prediction != labels[i]):
+            w += np.dot(labels[i], data[i])
+    return w
+
+
+def calc_accuracy(w, data, labels):
+    return 1
+
+
+def get_n_data_and_labels(data, labels, n):
+    stacked = np.column_stack((data, labels))
+    np.random.shuffle(stacked)
+    n_data = [data[i][:-1] for i in range(n)]
+    n_labels = [labels[i][-1] for i in range(n)]
+    return n_data, n_labels
 
 
 def main():
-    n = 10
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper()
 
-    train_stacked = np.column_stack((train_data, train_labels))
-    np.random.shuffle(train_stacked)
-    train_data_n = [train_stacked[i][:-1] for i in range(n)]
-    train_labels_n = [train_stacked[i][-1] for i in range(n)]
-
-    perceptron(train_data_n, train_labels_n)
+    for n in [5, 10]:
+        train_data_n, train_labels_n = get_n_data_and_labels(train_data, train_labels, n)
+        test_data_n, test_labels_n = get_n_data_and_labels(test_data, test_labels, n)
+        w = perceptron(train_data_n, train_labels_n)
+        accuracy = calc_accuracy(w, test_data_n, test_labels_n)
+        print('n = {}, accuracy = {}'.format(n, accuracy))
 
 
 if __name__ == '__main__':
