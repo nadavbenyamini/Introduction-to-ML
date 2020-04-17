@@ -45,6 +45,15 @@ def helper():
 
 
 #################################
+
+def get_n_samples(data, labels, n):
+    stacked = np.column_stack((data, labels))
+    np.random.shuffle(stacked)
+    n_data = [stacked[i][:-1] for i in range(n)]
+    n_labels = [stacked[i][-1] for i in range(n)]
+    return n_data, n_labels
+
+
 def sign(x):
     if x == 0:
         return 0
@@ -73,17 +82,17 @@ def calc_accuracy(w, data, labels):
     return sum([predict(w, data[i]) == labels[i] for i in range(n)]) / n
 
 
-def get_n_samples(data, labels, n):
-    stacked = np.column_stack((data, labels))
-    np.random.shuffle(stacked)
-    n_data = [stacked[i][:-1] for i in range(n)]
-    n_labels = [stacked[i][-1] for i in range(n)]
-    return n_data, n_labels
+def display_table(rows, columns):
+    fig, ax = plt.subplots()
+    ax.xaxis.set_visible(False)
+    ax.yaxis.set_visible(False)
+    plt.table(cellText=rows, colLabels=columns, loc='center')
+    plt.show()  # TODO - Comment out
 
 
 def main():
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper()
-    n_list = [5, 10, 50] #, 100, 500, 1000, 5000]
+    n_list = [5, 10, 50, 100, 500, 1000, 5000]
     accuracies = {}
     for n in n_list:
         accuracies[n] = []
@@ -93,8 +102,9 @@ def main():
             accuracies[n].append(calc_accuracy(w, test_data, test_labels))
         print('n = {}, mean_accuracy = {}, median_accuracy = {}'.format(n, np.mean(accuracies[n]), np.median(accuracies[n])))
 
-    plt.table([[n, accuracies[n]] for n in accuracies])
-    plt.show()
+    columns = ['N', 'Mean Accuracy', 'Median Accuracy']
+    rows = [[n, np.mean(accuracies[n]), np.median(accuracies[n])] for n in accuracies]
+    display_table(rows, columns)
 
 
 if __name__ == '__main__':
