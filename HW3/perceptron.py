@@ -102,9 +102,16 @@ def main():
             accuracies[n].append(calc_accuracy(w, test_data, test_labels))
         print('n = {}, mean_accuracy = {}, median_accuracy = {}'.format(n, np.mean(accuracies[n]), np.median(accuracies[n])))
 
-    columns = ['N', 'Mean Accuracy', 'Median Accuracy']
-    rows = [[n, np.mean(accuracies[n]), np.median(accuracies[n])] for n in accuracies]
-    display_table(rows, columns)
+    c = ['N', 'Mean Accuracy', '95% Percentile', '5% Percentile']
+    r = []
+    for n in accuracies:
+        r += [[n, np.mean(accuracies[n]), np.percentile(accuracies[n], q=0.95),  np.percentile(accuracies[n], q=0.05)]]
+
+    # Q1:
+    display_table(r, c)
+
+    # Q2:
+    plt.imshow(np.reshape(w, (28, 28)), interpolation='nearest')
 
 
 if __name__ == '__main__':
