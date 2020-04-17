@@ -14,7 +14,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
-    <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587129305350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
+    <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587130972211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
   </component>
   <component name="DatabaseView">
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
+            <state relative-caret-position="137">
+              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
               <folding>
                 <element signature="e#163#181#0" expanded="true" />
               </folding>
@@ -255,7 +255,7 @@
       <workItem from="1585384685349" duration="21163000" />
       <workItem from="1585465297274" duration="109000" />
       <workItem from="1585664088735" duration="19825000" />
-      <workItem from="1587111554986" duration="11792000" />
+      <workItem from="1587111554986" duration="15008000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -376,14 +376,29 @@
       <option name="project" value="LOCAL" />
       <updated>1587128684518</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="HW3 Q1 finished">
+      <created>1587129364167</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1587129364167</updated>
+    </task>
+    <task id="LOCAL-00019" summary="HW3 Q1 finished">
+      <created>1587130036629</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1587130036629</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96020000" />
+    <option name="totallyTimeSpent" value="99236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16583748" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -406,8 +421,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.3681592" />
-      <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.3681592" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,7 +446,8 @@
     <MESSAGE value="deleted corona stuff" />
     <MESSAGE value="HW3 basic accuracy test" />
     <MESSAGE value="HW3 Q1" />
-    <option name="LAST_COMMIT_MESSAGE" value="HW3 Q1" />
+    <MESSAGE value="HW3 Q1 finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="HW3 Q1 finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -485,8 +501,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="98" column="41" selection-start-line="98" selection-start-column="41" selection-end-line="98" selection-end-column="41" />
+        <state relative-caret-position="137">
+          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
           <folding>
             <element signature="e#163#181#0" expanded="true" />
           </folding>
