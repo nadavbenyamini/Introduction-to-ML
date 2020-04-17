@@ -51,44 +51,50 @@ def sign(x):
     return 1 if x > 0 else -1
 
 
+def predict(w, x):
+    dp = np.dot(w, x)
+    return sign(dp.astype(float))
+
+
 def perceptron(data, labels):
     """
     :return: nd array of shape (data.shape[1],) or (data.shape[1],1) representing the perceptron classifier
     """
     data = sklearn.preprocessing.normalize(data)
-    n = len(labels)
-    m = data[0].shape[0]
-    w = np.zeros(m)
-
-    for i in range(n):
-        dp = np.dot(w, data[i])
-        prediction = sign(dp.astype(float))
-        if np.where(prediction != labels[i]):
+    w = np.zeros(data[0].shape[0])
+    for i in range(len(labels)):
+        if np.where(predict(w, data[i]) != labels[i]):
             w += np.dot(labels[i], data[i])
     return w
 
 
 def calc_accuracy(w, data, labels):
-    return 1
+    n = len(labels)
+    return sum([predict(w, data[i]) == labels[i] for i in range(n)]) / n
 
 
-def get_n_data_and_labels(data, labels, n):
+def get_n_samples(data, labels, n):
     stacked = np.column_stack((data, labels))
     np.random.shuffle(stacked)
-    n_data = [data[i][:-1] for i in range(n)]
-    n_labels = [labels[i][-1] for i in range(n)]
+    n_data = [stacked[i][:-1] for i in range(n)]
+    n_labels = [stacked[i][-1] for i in range(n)]
     return n_data, n_labels
 
 
 def main():
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper()
+    n_list = [5, 10, 50] #, 100, 500, 1000, 5000]
+    accuracies = {}
+    for n in n_list:
+        accuracies[n] = []
+        for j in range(10):
+            train_data_n, train_labels_n = get_n_samples(train_data, train_labels, n)
+            w = perceptron(train_data_n, train_labels_n)
+            accuracies[n].append(calc_accuracy(w, test_data, test_labels))
+        print('n = {}, mean_accuracy = {}, median_accuracy = {}'.format(n, np.mean(accuracies[n]), np.median(accuracies[n])))
 
-    for n in [5, 10]:
-        train_data_n, train_labels_n = get_n_data_and_labels(train_data, train_labels, n)
-        test_data_n, test_labels_n = get_n_data_and_labels(test_data, test_labels, n)
-        w = perceptron(train_data_n, train_labels_n)
-        accuracy = calc_accuracy(w, test_data_n, test_labels_n)
-        print('n = {}, accuracy = {}'.format(n, accuracy))
+    plt.table([[n, accuracies[n]] for n in accuracies])
+    plt.show()
 
 
 if __name__ == '__main__':
