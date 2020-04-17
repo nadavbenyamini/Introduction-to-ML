@@ -48,10 +48,14 @@ def perceptron(data, labels):
     """
     :return: nd array of shape (data.shape[1],) or (data.shape[1],1) representing the perceptron classifier
     """
-    print('Starting perceptron')
-    print(labels)
-    print('-----')
-    print(data)
+    data = sklearn.preprocessing.normalize(data)
+    n = len(labels)
+    w = np.zeros(n)
+    for i in range(n):
+        prediction = np.sign(np.dot(w[i], data[i]))
+        print(f'np.dot(w[i], data[i])={np.dot(w[i], data[i])}, sign={prediction}')
+        if prediction != labels[i][0]:
+            w = w + labels[i][0] * data[i]
 
 #################################
 
@@ -59,7 +63,13 @@ def perceptron(data, labels):
 def main():
     n = 10
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper()
-    perceptron(train_data[:n], train_labels[:n])
+
+    train_stacked = np.column_stack((train_data, train_labels))
+    np.random.shuffle(train_stacked)
+    train_data_n = [train_stacked[i][:-1] for i in range(n)]
+    train_labels_n = [train_stacked[i][-1] for i in range(n)]
+
+    perceptron(train_data_n, train_labels_n)
 
 
 if __name__ == '__main__':
