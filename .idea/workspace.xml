@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="" />
+    <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/HW3/perceptron.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +14,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
-    <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1585726643905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
+    <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587113840921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
+    <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -30,22 +34,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW2/skeleton.py">
+        <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="195">
+              <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
               <folding>
-                <element signature="e#98#116#0" expanded="true" />
+                <element signature="e#163#181#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -85,9 +80,11 @@
       <find>A0</find>
       <find>PENALTY=</find>
       <find>TODO</find>
+      <find />
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -103,6 +100,8 @@
         <option value="$PROJECT_DIR$/HW2/intervals.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/HW2/skeleton.py" />
+        <option value="$PROJECT_DIR$/HW3/skeleton.py" />
+        <option value="$PROJECT_DIR$/HW3/perceptron.py" />
       </list>
     </option>
   </component>
@@ -118,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -129,7 +127,7 @@
             <path>
               <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="Homework" type="462c0819:PsiDirectoryNode" />
-              <item name="HW2" type="462c0819:PsiDirectoryNode" />
+              <item name="HW3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
@@ -139,6 +137,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -166,7 +165,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.skeleton">
+  <component name="RunManager" selected="Python.perceptron">
     <configuration name="302307699_HW1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,6 +180,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW1/302307699_HW1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="perceptron" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Homework" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/HW3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW3/perceptron.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -213,6 +234,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.perceptron" />
         <item itemvalue="Python.skeleton" />
         <item itemvalue="Python.302307699_HW1" />
       </list>
@@ -238,6 +260,7 @@
       <workItem from="1585384685349" duration="21163000" />
       <workItem from="1585465297274" duration="109000" />
       <workItem from="1585664088735" duration="19825000" />
+      <workItem from="1587111554986" duration="2741000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -316,23 +339,30 @@
       <option name="project" value="LOCAL" />
       <updated>1585920926428</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="HW2">
+      <created>1587111570220</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587111570220</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84228000" />
+    <option name="totallyTimeSpent" value="86969000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="101" width="1680" height="1050" extended-state="6" />
+    <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11519608" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40704072" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4059293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -347,7 +377,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.36825982" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3681592" />
       <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
     </layout>
   </component>
@@ -366,7 +396,8 @@
     <MESSAGE value="Basic layout for Q6" />
     <MESSAGE value="Finished" />
     <MESSAGE value="Preparing for final submission" />
-    <option name="LAST_COMMIT_MESSAGE" value="Preparing for final submission" />
+    <MESSAGE value="HW2" />
+    <option name="LAST_COMMIT_MESSAGE" value="HW2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -401,19 +432,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW2/skeleton.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding>
             <element signature="e#98#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+          <folding>
+            <element signature="e#163#181#0" expanded="true" />
           </folding>
         </state>
       </provider>
