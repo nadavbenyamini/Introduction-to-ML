@@ -81,7 +81,7 @@ def display_table(rows, columns):
     ax.xaxis.set_visible(False)
     ax.yaxis.set_visible(False)
     plt.table(cellText=rows, colLabels=columns, loc='center')
-    plt.show()  # TODO - Comment out
+    # plt.show()
 
 
 def main():
@@ -103,7 +103,7 @@ def main():
     # Q2:
     w = perceptron(train_data, train_labels)
     plt.imshow(np.reshape(w, (28, 28)), interpolation='nearest')
-    plt.show()  # TODO - Comment out
+    # plt.show()  # TODO - Comment out
 
     # Q3:
     print('Accuracy = {}'.format(calc_accuracy(w, test_data, test_labels)))
@@ -113,7 +113,7 @@ def main():
         prediction = predict(w, test_data[i])
         if prediction != test_labels[i]:
             plt.imshow(np.reshape(test_data[i], (28, 28)), interpolation='nearest')
-            plt.show()  # TODO - Comment out
+            # plt.show()
             break
 
 
