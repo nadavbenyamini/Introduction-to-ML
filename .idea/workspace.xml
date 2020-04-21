@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/HW3/HW3_302307699.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/HW3_programming.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/HW3_programming.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/HW3_theory.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW3/perceptron.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW4/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW4/sgd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW3/perceptron.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW3/perceptron.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,7 +20,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
-    <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587130972211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
+    <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587151276717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
   </component>
   <component name="DatabaseView">
@@ -34,13 +40,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
+        <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-              <folding>
-                <element signature="e#163#181#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="443">
+              <caret line="72" column="4" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -102,6 +105,8 @@
         <option value="$PROJECT_DIR$/HW2/skeleton.py" />
         <option value="$PROJECT_DIR$/HW3/skeleton.py" />
         <option value="$PROJECT_DIR$/HW3/perceptron.py" />
+        <option value="$PROJECT_DIR$/HW4/a" />
+        <option value="$PROJECT_DIR$/HW4/sgd.py" />
       </list>
     </option>
   </component>
@@ -117,6 +122,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,13 +132,22 @@
             </path>
             <path>
               <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="HW3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="HW4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,7 +270,11 @@
       <workItem from="1585384685349" duration="21163000" />
       <workItem from="1585465297274" duration="109000" />
       <workItem from="1585664088735" duration="19825000" />
-      <workItem from="1587111554986" duration="15008000" />
+      <workItem from="1587111554986" duration="15116000" />
+      <workItem from="1587209893791" duration="32000" />
+      <workItem from="1587279583465" duration="53000" />
+      <workItem from="1587449710127" duration="2145000" />
+      <workItem from="1587482894075" duration="1222000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -390,23 +409,36 @@
       <option name="project" value="LOCAL" />
       <updated>1587130036629</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="HW3 Finished">
+      <created>1587151260707</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1587151260707</updated>
+    </task>
+    <task id="LOCAL-00021" summary="HW3 Finished">
+      <created>1587151288312</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1587151288312</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99236000" />
+    <option name="totallyTimeSpent" value="102796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16583748" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17412935" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.4355758" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.4355758" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -415,14 +447,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="DB Execution Console" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.47434434" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.47332576" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5002764" side_tool="true" weight="0.56898516" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32839224" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
-      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.3681592" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.3681592" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -447,20 +479,15 @@
     <MESSAGE value="HW3 basic accuracy test" />
     <MESSAGE value="HW3 Q1" />
     <MESSAGE value="HW3 Q1 finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="HW3 Q1 finished" />
+    <MESSAGE value="HW3 Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="HW3 Finished" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
     <entry file="file://$PROJECT_DIR$/hw1_graph_2.png" />
     <entry file="file://$PROJECT_DIR$/hw1_graph_1.png" />
     <entry file="file://$PROJECT_DIR$/302307699_HW1.py" />
-    <entry file="file://$PROJECT_DIR$/corona_paths_bot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/corona_paths_bot.py" />
     <entry file="file://$PROJECT_DIR$/HW1/hw1_graph_1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -501,11 +528,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="107" column="9" lean-forward="true" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="9" />
-          <folding>
-            <element signature="e#163#181#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="231">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW4/a">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="249" column="14" lean-forward="true" selection-start-line="249" selection-start-column="14" selection-end-line="249" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="72" column="4" lean-forward="true" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="24" />
         </state>
       </provider>
     </entry>
