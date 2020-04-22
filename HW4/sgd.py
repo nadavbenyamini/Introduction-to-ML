@@ -71,11 +71,14 @@ def SGD_hinge(data, labels, C, eta_0, T):
     Implements Hinge loss using SGD.
     """
     n = len(labels)
-    w = np.zeros(n)
-    for i in range(T):
-        t = np.random.randint(0, n)
-        eta = eta_0/t
-        w = (1-eta)*w + np.dot(eta*C*labels[t], data[t])
+    w = np.zeros(data[0].shape[0])
+    for t in range(T):
+        rand = np.random.randint(0, n)
+        eta = eta_0 / (t+1)
+        if np.dot(w*labels[rand], data[rand]) < 1:
+            w = (1-eta)*w + np.dot(eta*C*labels[rand], data[rand])
+        else:
+            w = (1-eta)*w
     return w
 
 
@@ -89,18 +92,18 @@ def SGD_ce(data, labels, eta_0, T):
 #################################
 
 
-def calc_accuracy(w, data, labels):
-    n = len(labels)
-    s = 0
-    for i in range(n):
-        expected = labels[i]
-        result = np.dot(w, data[i])
-        s += hing_loss(expected, result)
-    return s / n
-
-
 def hing_loss(expected, result):
     return max(0, 1 - expected * result)
+
+
+def predict(w, x):
+    dp = np.dot(w, x)
+    return 1 if dp.astype(float) >= 0 else -1
+
+
+def calc_accuracy(w, data, labels):
+    n = len(labels)
+    return sum(predict(w, data[i]) == labels[i] for i in range(n)) / n
 
 
 def main():
