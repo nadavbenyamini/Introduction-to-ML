@@ -70,8 +70,13 @@ def SGD_hinge(data, labels, C, eta_0, T):
     """
     Implements Hinge loss using SGD.
     """
-    # TODO: Implement me
-    pass
+    n = len(labels)
+    w = np.zeros(n)
+    for i in range(T):
+        t = np.random.randint(0, n)
+        eta = eta_0/t
+        w = (1-eta)*w + np.dot(eta*C*labels[t], data[t])
+    return w
 
 
 def SGD_ce(data, labels, eta_0, T):
@@ -84,8 +89,28 @@ def SGD_ce(data, labels, eta_0, T):
 #################################
 
 
+def calc_accuracy(w, data, labels):
+    n = len(labels)
+    s = 0
+    for i in range(n):
+        expected = labels[i]
+        result = np.dot(w, data[i])
+        s += hing_loss(expected, result)
+    return s / n
+
+
 def hing_loss(expected, result):
     return max(0, 1 - expected * result)
 
 
-#################################
+def main():
+    train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper_hinge()
+    for k in range(-5, 6):
+        eta_0 = 10**k
+        sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
+        accuracy = calc_accuracy(w=sgd, data=validation_data, labels=validation_labels)
+        print('eta_0 = {}, accuracy = {}'.format(eta_0, accuracy))
+
+
+if __name__ == '__main__':
+    main()
