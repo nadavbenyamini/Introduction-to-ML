@@ -6,6 +6,7 @@
 
 import numpy as np
 import numpy.random
+from numpy.linalg import norm
 from sklearn.datasets import fetch_openml
 import sklearn.preprocessing
 import matplotlib.pyplot as plt
@@ -72,8 +73,9 @@ def SGD_hinge(data, labels, C, eta_0, T):
     """
     Implements Hinge loss using SGD.
     """
-    n = len(labels)
+    data = sklearn.preprocessing.normalize(data)
     w = np.zeros(data[0].shape[0])
+    n = len(labels)
     for t in range(T):
         rand = np.random.randint(0, n)
         eta = eta_0 / (t+1)
@@ -88,9 +90,37 @@ def SGD_ce(data, labels, eta_0, T):
     """
     Implements multi-class cross entropy loss using SGD.
     """
-    # TODO: Implement me
-    pass
+    data = sklearn.preprocessing.normalize(data)
+    L = 10  # 10 Possible labels
+    w_arr = [np.zeros(data[0].shape[0])] * L
+    n = len(labels)
+    for t in range(T):
+        rand = np.random.randint(0, n)
+        sum_exp = sum(np.exp(np.dot(w, data[rand])) for w in w_arr)
+        eta = eta_0 / (t+1)
+        for i in range(L):
+            if np.isnan(w_arr[i]).any():
+                print(w_arr[i])
+                raise Exception('w is NaN (Before) i={}, t={}!!!'.format(i, t))
+            gradient = ce_gradient(i, w_arr[i], data[rand], labels[rand], sum_exp)
 
+            if np.isnan(gradient).any():
+                raise Exception('gradient is NaN i={}, t={}!!!'.format(i, t))
+
+            w_arr[i] = w_arr[i] - gradient
+
+            if np.isnan(w_arr[i]).any():
+                raise Exception('w is NaN (After)!!!')
+    return w_arr
+
+
+def ce_gradient(i, w, x, y, sum_exp):
+    indicator = int(str(i) == str(y))
+    p = (np.exp(np.dot(w, x))) / sum_exp
+    gradient = (p - indicator) * x
+    if np.isnan(gradient).any():
+        print(f'np.dot(w, x)={np.dot(w, x)} np.exp(np.dot(w, x))={np.exp(np.dot(w, x))} sum_exp={sum_exp} p={p}')
+    return gradient
 #################################
 
 
@@ -104,7 +134,18 @@ def calc_accuracy(w, data, labels):
     return sum(predict(w, data[i]) == labels[i] for i in range(n)) / n
 
 
-def main():
+def calc_accuracy_multi_labels(w_arr, data, labels):
+    n = len(labels)
+    return sum(get_max_prediction(w_arr, data[i]) == labels[i] for i in range(n)) / n
+
+
+def get_max_prediction(w_arr, x):
+    all_predictions = {str(i): np.dot(w, x) for i, w in enumerate(w_arr)}
+    # print(all_predictions)
+    return max(all_predictions.items(), key=operator.itemgetter(1))[0]
+
+
+def q1_main():
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper_hinge()
     accuracies = {}
 
@@ -148,6 +189,42 @@ def main():
 
     # Q1d
     print('Accuracy on test data = {}'.format(calc_accuracy(sgd, test_data, test_labels)))
+
+
+def q2_main():
+    train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper_ce()
+    accuracies = {}
+
+    # Q2a
+    for k in range(-5, 6):
+        eta_0 = 10 ** k
+        accuracies[eta_0] = []
+        for j in range(10):
+            sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=eta_0, T=1000)
+            accuracies[eta_0].append(calc_accuracy_multi_labels(sgd, validation_data, validation_labels))
+        accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+    plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
+    plt.xscale('log')
+    plt.xlabel('eta_0')
+    plt.ylabel('Average Accuracy')
+    plt.show()  # TODO - Comment out
+
+    # Q2a
+    best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
+    print('Best eta = {}'.format(best_eta))
+    sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=best_eta, T=2000)
+    for i, w in enumerate(sgd):
+        plt.imshow(np.reshape(w, (28, 28)), interpolation='nearest')
+        plt.title('i={}'.format(i))
+        plt.show()  # TODO - Comment out
+
+    # Q3a
+    print('Accuracy on test data = {}'.format(calc_accuracy_multi_labels(sgd, test_data, test_labels)))
+
+
+def main():
+    # q1_main()
+    q2_main()
 
 
 if __name__ == '__main__':
