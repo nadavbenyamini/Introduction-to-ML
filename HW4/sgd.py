@@ -8,6 +8,8 @@ import numpy as np
 import numpy.random
 from sklearn.datasets import fetch_openml
 import sklearn.preprocessing
+import matplotlib.pyplot as plt
+import operator
 
 """
 Assignment 4 question 2 skeleton.
@@ -92,10 +94,6 @@ def SGD_ce(data, labels, eta_0, T):
 #################################
 
 
-def hing_loss(expected, result):
-    return max(0, 1 - expected * result)
-
-
 def predict(w, x):
     dp = np.dot(w, x)
     return 1 if dp.astype(float) >= 0 else -1
@@ -108,11 +106,48 @@ def calc_accuracy(w, data, labels):
 
 def main():
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper_hinge()
+    accuracies = {}
+
+    # Q1a
     for k in range(-5, 6):
         eta_0 = 10**k
-        sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
-        accuracy = calc_accuracy(w=sgd, data=validation_data, labels=validation_labels)
-        print('eta_0 = {}, accuracy = {}'.format(eta_0, accuracy))
+        accuracies[eta_0] = []
+        for j in range(10):
+            sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
+            accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+        accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+    plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
+    plt.xscale('log')
+    plt.xlabel('eta_0')
+    plt.ylabel('Average Accuracy')
+    plt.show()  # TODO - Comment out
+
+    # Q1b
+    best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
+    print('Best eta0 = {}'.format(best_eta))
+    accuracies = {}
+    for k in range(-5, 6):
+        c = 10**k
+        accuracies[c] = []
+        for j in range(10):
+            sgd = SGD_hinge(data=train_data, labels=train_labels, C=c, eta_0=best_eta, T=1000)
+            accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+        accuracies[c] = sum(accuracies[c]) / 10
+    plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
+    plt.xscale('log')
+    plt.xlabel('C')
+    plt.ylabel('Average Accuracy')
+    plt.show()  # TODO - Comment out
+
+    # Q1c
+    best_c = max(accuracies.items(), key=operator.itemgetter(1))[0]
+    print('Best c = {}'.format(best_c))
+    sgd = SGD_hinge(data=train_data, labels=train_labels, C=best_c, eta_0=best_eta, T=2000)
+    plt.imshow(np.reshape(sgd, (28, 28)), interpolation='nearest')
+    plt.show()  # TODO - Comment out
+
+    # Q1d
+    print('Accuracy on test data = {}'.format(calc_accuracy(sgd, test_data, test_labels)))
 
 
 if __name__ == '__main__':
