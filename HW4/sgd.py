@@ -102,13 +102,13 @@ def SGD_ce(data, labels, eta_0, T):
         sum_exp = sum(np.exp(np.dot(w, data[rand])) for w in w_arr)
         eta = eta_0 / (t+1)
         for i in range(L):
-            gradient = ce_gradient(i, w_arr[i], data[rand], labels[rand], sum_exp)
+            indicator = int(str(i) == str(labels[rand]))
+            gradient = ce_gradient(w_arr[i], data[rand], indicator, sum_exp)
             w_arr[i] = w_arr[i] - eta*gradient
     return w_arr
 
 
-def ce_gradient(i, w, x, y, sum_exp):
-    indicator = int(str(i) == str(y))
+def ce_gradient(w, x, indicator, sum_exp):
     p = (np.exp(np.dot(w, x))) / sum_exp
     gradient = (p - indicator) * x
     return gradient
@@ -128,12 +128,26 @@ def calc_accuracy(w, data, labels):
 
 def calc_accuracy_multi_labels(w_arr, data, labels):
     n = len(labels)
+    '''
+    for i in range(n):
+        prediction = get_max_prediction(w_arr, data[i])
+        if prediction != labels[i]:
+            title = 'Wrong prediction (i={}). Predicted {} instead of {}'.format(i, prediction, labels[i])
+            plot_image(image=data[i], title=title)
+    '''
     return sum(get_max_prediction(w_arr, data[i]) == labels[i] for i in range(n)) / n
 
 
 def get_max_prediction(w_arr, x):
     all_predictions = {str(i): np.dot(w, x) for i, w in enumerate(w_arr)}
     return max(all_predictions.items(), key=operator.itemgetter(1))[0]
+
+
+def plot_image(image, title=None):
+    plt.imshow(np.reshape(image, (28, 28)), interpolation='nearest')
+    if title:
+        plt.title(title)
+    plt.show()  # TODO - Comment out
 
 
 def q1_main():
@@ -187,8 +201,7 @@ def q1_main():
     best_c = max(c_accuracies.items(), key=operator.itemgetter(1))[0]
     print('Best c = {}'.format(best_c))
     sgd = SGD_hinge(data=train_data, labels=train_labels, C=best_c, eta_0=best_eta, T=2000)
-    plt.imshow(np.reshape(sgd, (28, 28)), interpolation='nearest')
-    plt.show()  # TODO - Comment out
+    plot_image(image=sgd)
 
     # Q1d
     print('Accuracy on test data = {}'.format(calc_accuracy(sgd, test_data, test_labels)))
@@ -222,9 +235,7 @@ def q2_main():
     print('Best eta = {}'.format(best_eta))
     sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=best_eta, T=2000)
     for i, w in enumerate(sgd):
-        plt.imshow(np.reshape(w, (28, 28)), interpolation='nearest')
-        plt.title('i={}'.format(i))
-        plt.show()  # TODO - Comment out
+        plot_image(image=w, title='i={}'.format(i))
 
     # Q3a
     print('Accuracy on test data = {}'.format(calc_accuracy_multi_labels(sgd, test_data, test_labels)))
