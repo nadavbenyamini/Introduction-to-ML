@@ -6,11 +6,13 @@
 
 import numpy as np
 import numpy.random
-from numpy.linalg import norm
 from sklearn.datasets import fetch_openml
 import sklearn.preprocessing
 import matplotlib.pyplot as plt
 import operator
+import warnings
+warnings.filterwarnings("error")
+
 
 """
 Assignment 4 question 2 skeleton.
@@ -80,7 +82,8 @@ def SGD_hinge(data, labels, C, eta_0, T):
         rand = np.random.randint(0, n)
         eta = eta_0 / (t+1)
         if np.dot(w*labels[rand], data[rand]) < 1:
-            w = (1-eta)*w + np.dot(eta*C*labels[rand], data[rand])
+            gradient = -np.dot(labels[rand], data[rand])
+            w = (1-eta)*w - eta*C*gradient
         else:
             w = (1-eta)*w
     return w
@@ -99,18 +102,8 @@ def SGD_ce(data, labels, eta_0, T):
         sum_exp = sum(np.exp(np.dot(w, data[rand])) for w in w_arr)
         eta = eta_0 / (t+1)
         for i in range(L):
-            if np.isnan(w_arr[i]).any():
-                print(w_arr[i])
-                raise Exception('w is NaN (Before) i={}, t={}!!!'.format(i, t))
             gradient = ce_gradient(i, w_arr[i], data[rand], labels[rand], sum_exp)
-
-            if np.isnan(gradient).any():
-                raise Exception('gradient is NaN i={}, t={}!!!'.format(i, t))
-
-            w_arr[i] = w_arr[i] - gradient
-
-            if np.isnan(w_arr[i]).any():
-                raise Exception('w is NaN (After)!!!')
+            w_arr[i] = w_arr[i] - eta*gradient
     return w_arr
 
 
@@ -118,9 +111,8 @@ def ce_gradient(i, w, x, y, sum_exp):
     indicator = int(str(i) == str(y))
     p = (np.exp(np.dot(w, x))) / sum_exp
     gradient = (p - indicator) * x
-    if np.isnan(gradient).any():
-        print(f'np.dot(w, x)={np.dot(w, x)} np.exp(np.dot(w, x))={np.exp(np.dot(w, x))} sum_exp={sum_exp} p={p}')
     return gradient
+
 #################################
 
 
@@ -153,10 +145,14 @@ def q1_main():
     for k in range(-5, 6):
         eta_0 = 10**k
         accuracies[eta_0] = []
-        for j in range(10):
-            sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
-            accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
-        accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+        try:
+            for j in range(10):
+                sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
+                accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+            accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+        except RuntimeWarning:
+            del accuracies[eta_0]
+            continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
     plt.xscale('log')
     plt.xlabel('eta_0')
@@ -170,10 +166,14 @@ def q1_main():
     for k in range(-5, 6):
         c = 10**k
         accuracies[c] = []
-        for j in range(10):
-            sgd = SGD_hinge(data=train_data, labels=train_labels, C=c, eta_0=best_eta, T=1000)
-            accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
-        accuracies[c] = sum(accuracies[c]) / 10
+        try:
+            for j in range(10):
+                sgd = SGD_hinge(data=train_data, labels=train_labels, C=c, eta_0=best_eta, T=1000)
+                accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+            accuracies[c] = sum(accuracies[c]) / 10
+        except RuntimeWarning:
+            del accuracies[c]
+            continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
     plt.xscale('log')
     plt.xlabel('C')
@@ -199,10 +199,14 @@ def q2_main():
     for k in range(-5, 6):
         eta_0 = 10 ** k
         accuracies[eta_0] = []
-        for j in range(10):
-            sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=eta_0, T=1000)
-            accuracies[eta_0].append(calc_accuracy_multi_labels(sgd, validation_data, validation_labels))
-        accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+        try:
+            for j in range(10):
+                sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=eta_0, T=1000)
+                accuracies[eta_0].append(calc_accuracy_multi_labels(sgd, validation_data, validation_labels))
+            accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+        except RuntimeWarning:
+            del accuracies[eta_0]
+            continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
     plt.xscale('log')
     plt.xlabel('eta_0')
@@ -223,7 +227,9 @@ def q2_main():
 
 
 def main():
-    # q1_main()
+    print('\nStarting Q1:')
+    q1_main()
+    print('\nStarting Q2:')
     q2_main()
 
 
