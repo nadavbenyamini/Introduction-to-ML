@@ -82,8 +82,8 @@ def SGD_hinge(data, labels, C, eta_0, T):
         rand = np.random.randint(0, n)
         eta = eta_0 / (t+1)
         if np.dot(labels[rand] * w, data[rand]) < 1:
-            gradient = -1*eta*C*labels[rand]*data[rand]
-            w = (1-eta)*w - gradient
+            gradient = -1*labels[rand]*data[rand]
+            w = (1-eta)*w - eta*C*gradient
         else:
             w = (1-eta)*w
     return w
@@ -128,12 +128,15 @@ def calc_accuracy(w, data, labels):
 
 def calc_accuracy_multi_labels(w_arr, data, labels):
     n = len(labels)
+    # TODO - DELETE THIS DEBUGGING SECTION
     '''
     for i in range(n):
         prediction = get_max_prediction(w_arr, data[i])
         if prediction != labels[i]:
             title = 'Wrong prediction (i={}). Predicted {} instead of {}'.format(i, prediction, labels[i])
             plot_image(image=data[i], title=title)
+            print({str(j): np.dot(w, data[i]) for j, w in enumerate(w_arr)})
+            raise Exception('!!!!')
     '''
     return sum(get_max_prediction(w_arr, data[i]) == labels[i] for i in range(n)) / n
 
@@ -242,8 +245,8 @@ def q2_main():
 
 
 def main():
-    # print('\nStarting Q1')
-    # q1_main()
+    print('\nStarting Q1')
+    q1_main()
     print('\nStarting Q2')
     q2_main()
 
