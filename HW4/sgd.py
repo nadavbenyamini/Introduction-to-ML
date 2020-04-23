@@ -99,19 +99,20 @@ def SGD_ce(data, labels, eta_0, T):
     n = len(labels)
     for t in range(T):
         rand = np.random.randint(0, n)
-        sum_exp = sum(np.exp(np.dot(w, data[rand])) for w in w_arr)
+        x, y = data[rand], labels[rand]
+        sum_exp = sum(exp_w_x(w, x) for w in w_arr)
         eta = eta_0 / (t+1)
         for i in range(L):
+            w = w_arr[i]
             indicator = int(str(i) == str(labels[rand]))
-            gradient = ce_gradient(w_arr[i], data[rand], indicator, sum_exp)
-            w_arr[i] = w_arr[i] - eta*gradient
+            p = exp_w_x(w, x) / sum_exp
+            gradient = (p - indicator) * x
+            w_arr[i] = w - eta*gradient
     return w_arr
 
 
-def ce_gradient(w, x, indicator, sum_exp):
-    p = (np.exp(np.dot(w, x))) / sum_exp
-    gradient = (p - indicator) * x
-    return gradient
+def exp_w_x(w, x):
+    return np.exp(np.dot(w, x))
 
 #################################
 
