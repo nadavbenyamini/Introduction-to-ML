@@ -80,9 +80,10 @@ def SGD_hinge(data, labels, C, eta_0, T):
     n = len(labels)
     for t in range(T):
         rand = np.random.randint(0, n)
+        x, y = data[rand], labels[rand]
         eta = eta_0 / (t+1)
-        if np.dot(labels[rand] * w, data[rand]) < 1:
-            gradient = -1*labels[rand]*data[rand]
+        if np.dot(y * w, x) < 1:
+            gradient = -1*y*x
             w = (1-eta)*w - eta*C*gradient
         else:
             w = (1-eta)*w
@@ -101,10 +102,10 @@ def SGD_ce(data, labels, eta_0, T):
         rand = np.random.randint(0, n)
         x, y = data[rand], labels[rand]
         sum_exp = sum(exp_w_x(w, x) for w in w_arr)
-        eta = eta_0 / (t+1)
+        eta = eta_0  # / (t+1)
         for i in range(L):
             w = w_arr[i]
-            indicator = int(str(i) == str(labels[rand]))
+            indicator = int(str(i) == str(y))
             p = exp_w_x(w, x) / sum_exp
             gradient = (p - indicator) * x
             w_arr[i] = w - eta*gradient
@@ -204,7 +205,7 @@ def q1_main():
     # Q1c
     best_c = max(c_accuracies.items(), key=operator.itemgetter(1))[0]
     print('Best c = {}'.format(best_c))
-    sgd = SGD_hinge(data=train_data, labels=train_labels, C=best_c, eta_0=best_eta, T=2000)
+    sgd = SGD_hinge(data=train_data, labels=train_labels, C=best_c, eta_0=best_eta, T=20000)
     plot_image(image=sgd)
 
     # Q1d
@@ -237,17 +238,29 @@ def q2_main():
     # Q2a
     best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
     print('Best eta = {}'.format(best_eta))
-    sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=best_eta, T=2000)
+    sgd = SGD_ce(data=train_data, labels=train_labels, eta_0=best_eta, T=20000)
+
+    ax = []
+    fig = plt.figure()
     for i, w in enumerate(sgd):
-        plot_image(image=w, title='i={}'.format(i))
+        img = np.reshape(w, (28, 28))
+        ax.append(fig.add_subplot(2, 5, i+1))
+        ax[-1].set_title('i={}'.format(i))
+        ax[-1].axis('off')
+        plt.imshow(img, interpolation='nearest')
+    plt.show()
+    plt.close()
+
+    # for i, w in enumerate(sgd):
+    #   plot_image(image=w, title='i={}'.format(i))
 
     # Q3a
     print('Accuracy on test data = {}'.format(calc_accuracy_multi_labels(sgd, test_data, test_labels)))
 
 
 def main():
-    print('\nStarting Q1')
-    q1_main()
+    # print('\nStarting Q1')
+    # q1_main()
     print('\nStarting Q2')
     q2_main()
 
