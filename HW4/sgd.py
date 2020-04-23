@@ -81,9 +81,9 @@ def SGD_hinge(data, labels, C, eta_0, T):
     for t in range(T):
         rand = np.random.randint(0, n)
         eta = eta_0 / (t+1)
-        if np.dot(np.dot(w * data[rand]), labels[rand]) < 1:
-            gradient = -np.dot(labels[rand], data[rand])
-            w = (1-eta)*w - eta*C*gradient
+        if np.dot(labels[rand] * w, data[rand]) < 1:
+            gradient = -1*eta*C*labels[rand]*data[rand]
+            w = (1-eta)*w - gradient
         else:
             w = (1-eta)*w
     return w
@@ -139,51 +139,53 @@ def get_max_prediction(w_arr, x):
 
 def q1_main():
     train_data, train_labels, validation_data, validation_labels, test_data, test_labels = helper_hinge()
-    accuracies = {}
+    eta_accuracies = {}
 
     # Q1a
     for k in range(-5, 6):
         eta_0 = 10**k
-        accuracies[eta_0] = []
+        eta_accuracies[eta_0] = []
         try:
             for j in range(10):
                 sgd = SGD_hinge(data=train_data, labels=train_labels, C=1, eta_0=eta_0, T=1000)
-                accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
-            accuracies[eta_0] = sum(accuracies[eta_0]) / 10
+                eta_accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+            eta_accuracies[eta_0] = sum(eta_accuracies[eta_0]) / 10
         except RuntimeWarning:
             print('Overflow. Skipped eta_0={}'.format(eta_0))
-            del accuracies[eta_0]
-            continue
-    plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
+            del eta_accuracies[eta_0]
+
+    plt.plot(list(eta_accuracies.keys()), list(eta_accuracies.values()), '-o')
     plt.xscale('log')
     plt.xlabel('eta_0')
     plt.ylabel('Average Accuracy')
     plt.show()  # TODO - Comment out
 
     # Q1b
-    best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
+    best_eta = max(eta_accuracies.items(), key=operator.itemgetter(1))[0]
     print('Best eta0 = {}'.format(best_eta))
-    accuracies = {}
+
+    c_accuracies = {}
     for k in range(-5, 6):
         c = 10**k
-        accuracies[c] = []
+        c_accuracies[c] = []
         try:
             for j in range(10):
                 sgd = SGD_hinge(data=train_data, labels=train_labels, C=c, eta_0=best_eta, T=1000)
-                accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
-            accuracies[c] = sum(accuracies[c]) / 10
+                c_accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
+            c_accuracies[c] = sum(c_accuracies[c]) / 10
         except RuntimeWarning:
             print('Overflow. Skipped c={}'.format(c))
-            del accuracies[c]
+            del c_accuracies[c]
             continue
-    plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
+
+    plt.plot(list(c_accuracies.keys()), list(c_accuracies.values()), '-o')
     plt.xscale('log')
     plt.xlabel('C')
     plt.ylabel('Average Accuracy')
     plt.show()  # TODO - Comment out
 
     # Q1c
-    best_c = max(accuracies.items(), key=operator.itemgetter(1))[0]
+    best_c = max(c_accuracies.items(), key=operator.itemgetter(1))[0]
     print('Best c = {}'.format(best_c))
     sgd = SGD_hinge(data=train_data, labels=train_labels, C=best_c, eta_0=best_eta, T=2000)
     plt.imshow(np.reshape(sgd, (28, 28)), interpolation='nearest')
@@ -231,8 +233,8 @@ def q2_main():
 def main():
     print('\nStarting Q1:')
     q1_main()
-    #print('\nStarting Q2:')
-    #q2_main()
+    # print('\nStarting Q2:')
+    # q2_main()
 
 
 if __name__ == '__main__':
