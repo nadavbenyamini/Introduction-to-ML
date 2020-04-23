@@ -81,7 +81,7 @@ def SGD_hinge(data, labels, C, eta_0, T):
     for t in range(T):
         rand = np.random.randint(0, n)
         eta = eta_0 / (t+1)
-        if np.dot(w*labels[rand], data[rand]) < 1:
+        if np.dot(np.dot(w * data[rand]), labels[rand]) < 1:
             gradient = -np.dot(labels[rand], data[rand])
             w = (1-eta)*w - eta*C*gradient
         else:
@@ -151,6 +151,7 @@ def q1_main():
                 accuracies[eta_0].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
             accuracies[eta_0] = sum(accuracies[eta_0]) / 10
         except RuntimeWarning:
+            print('Overflow. Skipped eta_0={}'.format(eta_0))
             del accuracies[eta_0]
             continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
@@ -172,6 +173,7 @@ def q1_main():
                 accuracies[c].append(calc_accuracy(w=sgd, data=validation_data, labels=validation_labels))
             accuracies[c] = sum(accuracies[c]) / 10
         except RuntimeWarning:
+            print('Overflow. Skipped c={}'.format(c))
             del accuracies[c]
             continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
@@ -229,8 +231,8 @@ def q2_main():
 def main():
     print('\nStarting Q1:')
     q1_main()
-    print('\nStarting Q2:')
-    q2_main()
+    #print('\nStarting Q2:')
+    #q2_main()
 
 
 if __name__ == '__main__':
