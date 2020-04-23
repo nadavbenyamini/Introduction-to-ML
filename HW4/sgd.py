@@ -133,7 +133,6 @@ def calc_accuracy_multi_labels(w_arr, data, labels):
 
 def get_max_prediction(w_arr, x):
     all_predictions = {str(i): np.dot(w, x) for i, w in enumerate(w_arr)}
-    # print(all_predictions)
     return max(all_predictions.items(), key=operator.itemgetter(1))[0]
 
 
@@ -209,6 +208,7 @@ def q2_main():
                 accuracies[eta_0].append(calc_accuracy_multi_labels(sgd, validation_data, validation_labels))
             accuracies[eta_0] = sum(accuracies[eta_0]) / 10
         except RuntimeWarning:
+            print('Overflow. Skipped eta_0={}'.format(eta_0))
             del accuracies[eta_0]
             continue
     plt.plot(list(accuracies.keys()), list(accuracies.values()), '-o')
@@ -231,10 +231,10 @@ def q2_main():
 
 
 def main():
-    print('\nStarting Q1:')
-    q1_main()
-    # print('\nStarting Q2:')
-    # q2_main()
+    # print('\nStarting Q1')
+    # q1_main()
+    print('\nStarting Q2')
+    q2_main()
 
 
 if __name__ == '__main__':
