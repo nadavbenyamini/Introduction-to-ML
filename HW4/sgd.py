@@ -223,7 +223,7 @@ def q2_main():
     plt.xscale('log')
     plt.xlabel('eta_0')
     plt.ylabel('Average Accuracy')
-    plt.show()  # TODO - Comment out
+    # plt.show()
 
     # Q2a
     best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
