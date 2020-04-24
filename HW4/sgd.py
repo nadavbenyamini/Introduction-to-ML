@@ -102,7 +102,7 @@ def SGD_ce(data, labels, eta_0, T):
         rand = np.random.randint(0, n)
         x, y = data[rand], labels[rand]
         sum_exp = sum(exp_w_x(w, x) for w in w_arr)
-        eta = eta_0  # / (t+1)
+        eta = eta_0  # / (t+1)  Commented out because apparently constant eta performs better
         for i in range(L):
             w = w_arr[i]
             indicator = int(str(i) == str(y))
