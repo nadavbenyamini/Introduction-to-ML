@@ -143,6 +143,7 @@ def plot_image(image, title=None):
     if title:
         plt.title(title)
     # plt.show()
+    plt.close()
 
 
 def q1_main():
@@ -166,6 +167,7 @@ def q1_main():
     plt.xscale('log')
     plt.xlabel('eta_0')
     plt.ylabel('Average Accuracy')
+    plt.close()
     # plt.show()
 
     # Q1b
@@ -191,6 +193,7 @@ def q1_main():
     plt.xlabel('C')
     plt.ylabel('Average Accuracy')
     # plt.show()
+    plt.close()
 
     # Q1c
     best_c = max(c_accuracies.items(), key=operator.itemgetter(1))[0]
@@ -224,6 +227,7 @@ def q2_main():
     plt.xlabel('eta_0')
     plt.ylabel('Average Accuracy')
     # plt.show()
+    plt.close()
 
     # Q2a
     best_eta = max(accuracies.items(), key=operator.itemgetter(1))[0]
