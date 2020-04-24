@@ -130,16 +130,6 @@ def calc_accuracy(w, data, labels):
 
 def calc_accuracy_multi_labels(w_arr, data, labels):
     n = len(labels)
-    # TODO - DELETE THIS DEBUGGING SECTION
-    '''
-    for i in range(n):
-        prediction = get_max_prediction(w_arr, data[i])
-        if prediction != labels[i]:
-            title = 'Wrong prediction (i={}). Predicted {} instead of {}'.format(i, prediction, labels[i])
-            plot_image(image=data[i], title=title)
-            print({str(j): np.dot(w, data[i]) for j, w in enumerate(w_arr)})
-            raise Exception('!!!!')
-    '''
     return sum(get_max_prediction(w_arr, data[i]) == labels[i] for i in range(n)) / n
 
 
@@ -152,7 +142,7 @@ def plot_image(image, title=None):
     plt.imshow(np.reshape(image, (28, 28)), interpolation='nearest')
     if title:
         plt.title(title)
-    plt.show()  # TODO - Comment out
+    # plt.show()
 
 
 def q1_main():
@@ -176,7 +166,7 @@ def q1_main():
     plt.xscale('log')
     plt.xlabel('eta_0')
     plt.ylabel('Average Accuracy')
-    plt.show()  # TODO - Comment out
+    # plt.show()
 
     # Q1b
     best_eta = max(eta_accuracies.items(), key=operator.itemgetter(1))[0]
@@ -200,7 +190,7 @@ def q1_main():
     plt.xscale('log')
     plt.xlabel('C')
     plt.ylabel('Average Accuracy')
-    plt.show()  # TODO - Comment out
+    # plt.show()
 
     # Q1c
     best_c = max(c_accuracies.items(), key=operator.itemgetter(1))[0]
@@ -259,8 +249,8 @@ def q2_main():
 
 
 def main():
-    # print('\nStarting Q1')
-    # q1_main()
+    print('\nStarting Q1')
+    q1_main()
     print('\nStarting Q2')
     q2_main()
 
