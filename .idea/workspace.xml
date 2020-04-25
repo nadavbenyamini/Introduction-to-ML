@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW4/sgd.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW4/sgd.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +15,7 @@
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
     <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587540188704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
     <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
-    <SUITE FILE_PATH="coverage/Homework$sgd.coverage" NAME="sgd Coverage Results" MODIFIED="1587751945703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW4" />
+    <SUITE FILE_PATH="coverage/Homework$sgd.coverage" NAME="sgd Coverage Results" MODIFIED="1587811590388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW4" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -37,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="120" column="18" lean-forward="true" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
+            <state relative-caret-position="353">
+              <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
               <folding>
                 <element signature="e#179#197#0" expanded="true" />
               </folding>
@@ -66,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.show()</find>
       <find>srm</find>
       <find>get_penalty</find>
       <find>subplo</find>
@@ -96,6 +94,7 @@
       <find>SGD_ce</find>
       <find>eta</find>
       <find>eta =</find>
+      <find>.show</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
@@ -124,10 +123,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1609" />
-    <option name="y" value="275" />
-    <option name="width" value="1670" />
-    <option name="height" value="771" />
+    <option name="x" value="251" />
+    <option name="y" value="163" />
+    <option name="width" value="1660" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -288,7 +287,7 @@
       <workItem from="1587449710127" duration="2145000" />
       <workItem from="1587482894075" duration="2452000" />
       <workItem from="1587535803266" duration="25206000" />
-      <workItem from="1587624807620" duration="25457000" />
+      <workItem from="1587624807620" duration="26454000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -542,15 +541,42 @@
       <option name="project" value="LOCAL" />
       <updated>1587649876519</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Documentation">
+      <created>1587751857854</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1587751857854</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Final submission HW4">
+      <created>1587751911580</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1587751911580</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Final submission HW4">
+      <created>1587751957878</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1587751957878</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Closing plt">
+      <created>1587752020167</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1587752020167</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154689000" />
+    <option name="totallyTimeSpent" value="155686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15257049" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.17634052" />
@@ -559,7 +585,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.3477765" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.3477765" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -575,16 +601,13 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.37866226" />
+      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.37866226" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactored charts + q5 ready" />
-    <MESSAGE value="Basic layout for Q6" />
-    <MESSAGE value="Finished" />
     <MESSAGE value="Preparing for final submission" />
     <MESSAGE value="HW2" />
     <MESSAGE value="HW3 initiated" />
@@ -607,7 +630,10 @@
     <MESSAGE value="More debugging stuff" />
     <MESSAGE value="code cleanup" />
     <MESSAGE value="Q2 Ready with constant eta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Q2 Ready with constant eta" />
+    <MESSAGE value="Documentation" />
+    <MESSAGE value="Final submission HW4" />
+    <MESSAGE value="Closing plt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Closing plt" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -677,8 +703,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="120" column="18" lean-forward="true" selection-start-line="120" selection-start-column="18" selection-end-line="120" selection-end-column="18" />
+        <state relative-caret-position="353">
+          <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
           <folding>
             <element signature="e#179#197#0" expanded="true" />
           </folding>

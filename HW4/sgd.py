@@ -242,7 +242,7 @@ def q2_main():
         ax[-1].set_title('i={}'.format(i))
         ax[-1].axis('off')
         plt.imshow(img, interpolation='nearest')
-    plt.show()
+    # plt.show()
     plt.close()
 
     # for i, w in enumerate(sgd):
