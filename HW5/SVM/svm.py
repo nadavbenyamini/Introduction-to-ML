@@ -15,6 +15,7 @@ Please use the provided functions signature for the SVM implementation.
 Feel free to add functions and other code, and submit this file with the name svm.py
 """
 
+
 # generate points in 2D
 # return training_data, training_labels, validation_data, validation_labels
 def get_points():
@@ -45,12 +46,30 @@ def create_plot(X, y, clf):
                linestyles=['--', '-', '--'])
 
 
+def train_one_kernel(X_train, y_train, X_val, y_val, **kwargs):
+    clf = svm.SVC(**kwargs)
+    clf.fit(X_train, y_train)
+    n_support = clf.n_support_
+
+    title = ', '.join('{}: {}'.format(k, v) for k, v in kwargs.items())
+    create_plot(X_val, y_val, clf)
+    plt.title(title)
+    plt.show()
+
+    print('Classifier: {}, Number of support vectors: {}'.format(title, n_support))
+    return n_support
+
+
 def train_three_kernels(X_train, y_train, X_val, y_val):
     """
     Returns: np.ndarray of shape (3,2) :
                 A two dimensional array of size 3 that contains the number of support vectors for each class(2) in the three kernels.
     """
-    # TODO: add your code here
+    res = np.zeros((3, 2))
+    res[0] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='linear', C=1000)
+    res[1] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='poly', C=1000, degree=2)
+    res[2] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='rbf', C=1000)
+    return res
 
 
 def linear_accuracy_per_C(X_train, y_train, X_val, y_val):
@@ -67,3 +86,13 @@ def rbf_accuracy_per_gamma(X_train, y_train, X_val, y_val):
                     An array that contains the accuracy of the resulting model on the VALIDATION set.
     """
     # TODO: add your code here
+
+
+def main():
+    x_train, y_train, x_val, y_val = get_points()
+    train_three_kernels(x_train, y_train, x_val, y_val)
+
+
+if __name__ == '__main__':
+    main()
+
