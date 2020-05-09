@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Homework.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_C.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_10000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_100000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1e-05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_poly_1000_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_1000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.0001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.001.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_1000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_10000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_100000.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_1e-05.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/HW5/SVM/svm.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW5/SVM/svm.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
@@ -16,7 +40,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
     <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587540188704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
-    <SUITE FILE_PATH="coverage/Homework$svm.coverage" NAME="svm Coverage Results" MODIFIED="1589009833464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW5/SVM" />
+    <SUITE FILE_PATH="coverage/Homework$svm.coverage" NAME="svm Coverage Results" MODIFIED="1589011499670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW5/SVM" />
     <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
     <SUITE FILE_PATH="coverage/Homework$sgd.coverage" NAME="sgd Coverage Results" MODIFIED="1587811590388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW4" />
   </component>
@@ -39,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW5/SVM/svm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+            <state relative-caret-position="271">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="e#162#180#0" expanded="true" />
               </folding>
@@ -59,7 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>True err</find>
       <find>in range(</find>
       <find>res[i] =</find>
       <find>cross_validation</find>
@@ -89,6 +112,7 @@
       <find># plt.show</find>
       <find>plt.show</find>
       <find>plt.show()</find>
+      <find>/plot</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
@@ -155,6 +179,13 @@
               <item name="Homework" type="462c0819:PsiDirectoryNode" />
               <item name="HW5" type="462c0819:PsiDirectoryNode" />
               <item name="SVM" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="HW5" type="462c0819:PsiDirectoryNode" />
+              <item name="SVM" type="462c0819:PsiDirectoryNode" />
+              <item name="plots" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -366,7 +397,7 @@
       <workItem from="1587811547853" duration="1982000" />
       <workItem from="1587885575692" duration="755000" />
       <workItem from="1588578901989" duration="2099000" />
-      <workItem from="1589004370750" duration="4446000" />
+      <workItem from="1589004370750" duration="6941000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -669,23 +700,30 @@
       <option name="project" value="LOCAL" />
       <updated>1589007481623</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Q1 ready">
+      <created>1589009853034</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1589009853034</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164968000" />
+    <option name="totallyTimeSpent" value="167463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15975676" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.3228303" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.17634052" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.33523375" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4997236" visible="true" weight="0.4914481" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -710,7 +748,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HW3 basic perceptron" />
     <MESSAGE value="deleted corona stuff" />
     <MESSAGE value="HW3 basic accuracy test" />
     <MESSAGE value="HW3 Q1" />
@@ -735,7 +772,8 @@
     <MESSAGE value="submission" />
     <MESSAGE value="HW5 init" />
     <MESSAGE value="Q1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Q1.1" />
+    <MESSAGE value="Q1 ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Q1 ready" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -842,13 +880,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_C.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_gamma.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.01.png">
@@ -863,19 +895,55 @@
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1e-05.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.0001.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.001.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_poly_1000_2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.01.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.001.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_1e-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_100000.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_10_0.0001.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_C.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_Gamma.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_rbf_1000.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/svm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
+        <state relative-caret-position="271">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="e#162#180#0" expanded="true" />
           </folding>

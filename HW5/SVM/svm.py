@@ -47,7 +47,7 @@ def create_plot(X, y, clf):
 
 
 def save_plot(file_name):
-    plt.savefig(f'plots/{file_name}.png')
+    pass  # For saving the images restore this line: plt.savefig(f'plots/{file_name}.png')
 
 
 def plot_clf(clf, X_val, y_val, kernel, C, gamma=None, degree=None):
@@ -55,20 +55,20 @@ def plot_clf(clf, X_val, y_val, kernel, C, gamma=None, degree=None):
     file_name = 'decision_boundary_{}_{}'.format(kernel, C)
     if gamma:
         title += f' Gamma: {gamma}'
-        file_name += f'_{gamma}'
+        file_name += f'_gamma-{gamma}'
     if degree:
         title += f' Degree: {degree}'
-        file_name += f'_{degree}'
+        file_name += f'_degree-{degree}'
     create_plot(X_val, y_val, clf)
     plt.title(title)
     save_plot(file_name)
     plt.close()
 
 
-def train_one_kernel(X_train, y_train, X_val, y_val, **kwargs):
+def train_one_kernel(X_train, y_train, **kwargs):
     clf = svm.SVC(**kwargs)
     clf.fit(X_train, y_train)
-    plot_clf(clf, X_val, y_val, **kwargs)
+    plot_clf(clf, X_train, y_train, **kwargs)
     return clf
 
 
@@ -78,13 +78,13 @@ def train_three_kernels(X_train, y_train, X_val, y_val):
                 A two dimensional array of size 3 that contains the number of support vectors for each class(2) in the three kernels.
     """
     res = np.zeros((3, 2))
-    res[0] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='linear', C=1000).n_support_
+    res[0] = train_one_kernel(X_train, y_train, kernel='linear', C=1000).n_support_
     print('Linear kernel classifier, number of support vectors: {}'.format(res[0]))
 
-    res[1] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='poly', C=1000, degree=2).n_support_
+    res[1] = train_one_kernel(X_train, y_train, kernel='poly', C=1000, degree=2).n_support_
     print('Quadratic kernel classifier, number of support vectors: {}'.format(res[1]))
 
-    res[2] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='rbf', C=1000).n_support_
+    res[2] = train_one_kernel(X_train, y_train, kernel='rbf', C=1000).n_support_
     print('RBF kernel classifier number of support vectors: {}'.format(res[2]))
     return res
 
@@ -105,6 +105,8 @@ def linear_accuracy_per_C(X_train, y_train, X_val, y_val):
     plt.plot(rng, val_accuracies, '-o', color='red', label='Validation')
     plt.ylabel('Accuracy')
     plt.xlabel('log10(C)')
+    plt.legend()
+    plt.title('Accuracy per C')
     save_plot('accuracy_per_C')
     plt.close()
     return np.array(val_accuracies)
@@ -126,7 +128,9 @@ def rbf_accuracy_per_gamma(X_train, y_train, X_val, y_val):
     plt.plot(rng, val_accuracies, '-o', color='red', label='Validation')
     plt.ylabel('Accuracy')
     plt.xlabel('log10(gamma)')
-    save_plot('accuracy_per_C')
+    plt.legend()
+    plt.title('Accuracy per Gamma')
+    save_plot('accuracy_per_Gamma')
     plt.close()
     return np.array(val_accuracies)
 
