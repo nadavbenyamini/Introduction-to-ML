@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/HW5/DL/backprop_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/DL/backprop_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/DL/skeleton_backprop_network.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/MLP/mlp_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/MLP/skeleton_mlp_mnist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/SVM/skeleton_svm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/hw5.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HW5/mnist.pkl.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path=".idea/" />
@@ -34,22 +42,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
+        <entry file="file://$PROJECT_DIR$/HW5/SVM/skeleton_svm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
-              <folding>
-                <element signature="e#179#197#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1098">
-              <caret line="65" column="48" selection-start-line="64" selection-start-column="7" selection-end-line="65" selection-end-column="48" />
+            <state relative-caret-position="126">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -65,8 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>srm</find>
-      <find>get_penalty</find>
       <find>subplo</find>
       <find>True err</find>
       <find>in range(</find>
@@ -95,6 +89,8 @@
       <find>eta</find>
       <find>eta =</find>
       <find>.show</find>
+      <find># plt.show</find>
+      <find>plt.show</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
@@ -118,15 +114,21 @@
         <option value="$PROJECT_DIR$/HW3/skeleton.py" />
         <option value="$PROJECT_DIR$/HW3/perceptron.py" />
         <option value="$PROJECT_DIR$/HW4/a" />
+        <option value="$PROJECT_DIR$/HW3/temp.py" />
+        <option value="$PROJECT_DIR$/HW3/temp.txt" />
+        <option value="$PROJECT_DIR$/HW4/test.py" />
+        <option value="$PROJECT_DIR$/HW4/my_test.py" />
         <option value="$PROJECT_DIR$/HW4/sgd.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
+        <option value="$PROJECT_DIR$/test1.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="y" value="163" />
-    <option name="width" value="1660" />
-    <option name="height" value="778" />
+    <option name="x" value="1512" />
+    <option name="y" value="144" />
+    <option name="width" value="1650" />
+    <option name="height" value="785" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -135,7 +137,28 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="HW5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="HW5" type="462c0819:PsiDirectoryNode" />
+              <item name="SVM" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -148,6 +171,10 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/HW2" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/HW5" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -288,6 +315,10 @@
       <workItem from="1587482894075" duration="2452000" />
       <workItem from="1587535803266" duration="25206000" />
       <workItem from="1587624807620" duration="26454000" />
+      <workItem from="1587811547853" duration="1982000" />
+      <workItem from="1587885575692" duration="755000" />
+      <workItem from="1588578901989" duration="2099000" />
+      <workItem from="1589004370750" duration="267000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -569,23 +600,29 @@
       <option name="project" value="LOCAL" />
       <updated>1587752020167</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="submission">
+      <created>1587811694620</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1587811694620</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155686000" />
+    <option name="totallyTimeSpent" value="160789000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15257049" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15975676" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.17634052" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295325" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.3477765" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.33553356" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990878" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -594,21 +631,21 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.6031927" />
       <window_info anchor="bottom" id="DB Execution Console" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.4150513" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.50285065" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5002764" side_tool="true" weight="0.56898516" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.32839224" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.29922992" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
-      <window_info anchor="right" id="SciView" order="4" visible="true" weight="0.37866226" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.37806374" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Preparing for final submission" />
     <MESSAGE value="HW2" />
     <MESSAGE value="HW3 initiated" />
     <MESSAGE value="HW3 basic perceptron" />
@@ -633,7 +670,8 @@
     <MESSAGE value="Documentation" />
     <MESSAGE value="Final submission HW4" />
     <MESSAGE value="Closing plt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Closing plt" />
+    <MESSAGE value="submission" />
+    <option name="LAST_COMMIT_MESSAGE" value="submission" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -672,25 +710,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HW4/a" />
     <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-1247971763/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="2952" column="8" selection-start-line="2952" selection-start-column="8" selection-end-line="2952" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="65" column="48" selection-start-line="64" selection-start-column="7" selection-end-line="65" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -701,15 +725,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
+    <entry file="file://$PROJECT_DIR$/HW3/temp.txt" />
+    <entry file="file://$PROJECT_DIR$/HW3/perceptron.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="243" column="20" lean-forward="true" selection-start-line="243" selection-start-column="20" selection-end-line="243" selection-end-column="20" />
+        <state relative-caret-position="1458">
+          <caret line="81" column="31" lean-forward="true" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
           <folding>
             <element signature="e#179#197#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/intervals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW4/my_test.py" />
+    <entry file="file://$PROJECT_DIR$/HW4/sgd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="e#179#197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW2/assignment2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="297" column="22" selection-start-line="297" selection-start-column="22" selection-end-line="297" selection-end-column="22" />
+          <folding>
+            <element signature="e#98#116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/skeleton_svm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
