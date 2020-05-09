@@ -46,18 +46,30 @@ def create_plot(X, y, clf):
                linestyles=['--', '-', '--'])
 
 
+def save_plot(file_name):
+    plt.savefig(f'plots/{file_name}.png')
+
+
+def plot_clf(clf, X_val, y_val, kernel, C, gamma=None, degree=None):
+    title = f'Kernel: {kernel}, C: {C}'
+    file_name = 'decision_boundary_{}_{}'.format(kernel, C)
+    if gamma:
+        title += f' Gamma: {gamma}'
+        file_name += f'_{gamma}'
+    if degree:
+        title += f' Degree: {degree}'
+        file_name += f'_{degree}'
+    create_plot(X_val, y_val, clf)
+    plt.title(title)
+    save_plot(file_name)
+    plt.close()
+
+
 def train_one_kernel(X_train, y_train, X_val, y_val, **kwargs):
     clf = svm.SVC(**kwargs)
     clf.fit(X_train, y_train)
-    n_support = clf.n_support_
-
-    title = ', '.join('{}: {}'.format(k, v) for k, v in kwargs.items())
-    create_plot(X_val, y_val, clf)
-    plt.title(title)
-    plt.show()
-
-    print('Classifier: {}, Number of support vectors: {}'.format(title, n_support))
-    return n_support
+    plot_clf(clf, X_val, y_val, **kwargs)
+    return clf
 
 
 def train_three_kernels(X_train, y_train, X_val, y_val):
@@ -66,9 +78,14 @@ def train_three_kernels(X_train, y_train, X_val, y_val):
                 A two dimensional array of size 3 that contains the number of support vectors for each class(2) in the three kernels.
     """
     res = np.zeros((3, 2))
-    res[0] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='linear', C=1000)
-    res[1] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='poly', C=1000, degree=2)
-    res[2] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='rbf', C=1000)
+    res[0] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='linear', C=1000).n_support_
+    print('Linear kernel classifier, number of support vectors: {}'.format(res[0]))
+
+    res[1] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='poly', C=1000, degree=2).n_support_
+    print('Quadratic kernel classifier, number of support vectors: {}'.format(res[1]))
+
+    res[2] = train_one_kernel(X_train, y_train, X_val, y_val, kernel='rbf', C=1000).n_support_
+    print('RBF kernel classifier number of support vectors: {}'.format(res[2]))
     return res
 
 
@@ -77,7 +94,20 @@ def linear_accuracy_per_C(X_train, y_train, X_val, y_val):
         Returns: np.ndarray of shape (11,) :
                     An array that contains the accuracy of the resulting model on the VALIDATION set.
     """
-    # TODO: add your code here
+    train_accuracies, val_accuracies = [], []
+    rng = range(-5, 6)
+    for i in rng:
+        clf = train_one_kernel(X_train, y_train, X_val, y_val, kernel='linear', C=10**i)
+        train_accuracies.append(clf.score(X_train, y_train))
+        val_accuracies.append(clf.score(X_val, y_val))
+
+    plt.plot(rng, train_accuracies, '-o', color='blue', label='Training')
+    plt.plot(rng, val_accuracies, '-o', color='red', label='Validation')
+    plt.ylabel('Accuracy')
+    plt.xlabel('log10(C)')
+    save_plot('accuracy_per_C')
+    plt.close()
+    return np.array(val_accuracies)
 
 
 def rbf_accuracy_per_gamma(X_train, y_train, X_val, y_val):
@@ -85,12 +115,27 @@ def rbf_accuracy_per_gamma(X_train, y_train, X_val, y_val):
         Returns: np.ndarray of shape (11,) :
                     An array that contains the accuracy of the resulting model on the VALIDATION set.
     """
-    # TODO: add your code here
+    train_accuracies, val_accuracies = [], []
+    rng = range(-5, 6)
+    for i in rng:
+        clf = train_one_kernel(X_train, y_train, X_val, y_val, kernel='rbf', C=10, gamma=10**i)
+        train_accuracies.append(clf.score(X_train, y_train))
+        val_accuracies.append(clf.score(X_val, y_val))
+
+    plt.plot(rng, train_accuracies, '-o', color='blue', label='Training')
+    plt.plot(rng, val_accuracies, '-o', color='red', label='Validation')
+    plt.ylabel('Accuracy')
+    plt.xlabel('log10(gamma)')
+    save_plot('accuracy_per_C')
+    plt.close()
+    return np.array(val_accuracies)
 
 
 def main():
     x_train, y_train, x_val, y_val = get_points()
     train_three_kernels(x_train, y_train, x_val, y_val)
+    linear_accuracy_per_C(x_train, y_train, x_val, y_val)
+    rbf_accuracy_per_gamma(x_train, y_train, x_val, y_val)
 
 
 if __name__ == '__main__':

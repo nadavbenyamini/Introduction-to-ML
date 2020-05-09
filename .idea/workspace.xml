@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Homework.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW5/SVM/skeleton_svm.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW5/SVM/svm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HW5/SVM/svm.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW5/SVM/svm.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +16,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Homework$302307699_HW1.coverage" NAME="302307699_HW1 Coverage Results" MODIFIED="1585386099509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW1" />
     <SUITE FILE_PATH="coverage/Homework$perceptron.coverage" NAME="perceptron Coverage Results" MODIFIED="1587540188704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW3" />
-    <SUITE FILE_PATH="coverage/Homework$svm.coverage" NAME="svm Coverage Results" MODIFIED="1589007464830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW5/SVM" />
+    <SUITE FILE_PATH="coverage/Homework$svm.coverage" NAME="svm Coverage Results" MODIFIED="1589009833464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW5/SVM" />
     <SUITE FILE_PATH="coverage/Homework$skeleton.coverage" NAME="skeleton Coverage Results" MODIFIED="1587113780586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW2" />
     <SUITE FILE_PATH="coverage/Homework$sgd.coverage" NAME="sgd Coverage Results" MODIFIED="1587811590388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/HW4" />
   </component>
@@ -38,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW5/SVM/svm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+            <state relative-caret-position="216">
+              <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
               <folding>
                 <element signature="e#162#180#0" expanded="true" />
               </folding>
@@ -58,7 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>subplo</find>
       <find>True err</find>
       <find>in range(</find>
       <find>res[i] =</find>
@@ -88,11 +88,13 @@
       <find>.show</find>
       <find># plt.show</find>
       <find>plt.show</find>
+      <find>plt.show()</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
       <replace />
       <replace>RuntimeWarning</replace>
+      <replace>plt.savefig(fig_name)</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -165,10 +167,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="python.debugger.dataview.coloredbydefault" value="false" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/HW5/SVM/plots" />
       <recent name="$PROJECT_DIR$/HW2" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -206,6 +210,28 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HW1/302307699_HW1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="Homework" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -340,7 +366,7 @@
       <workItem from="1587811547853" duration="1982000" />
       <workItem from="1587885575692" duration="755000" />
       <workItem from="1588578901989" duration="2099000" />
-      <workItem from="1589004370750" duration="2103000" />
+      <workItem from="1589004370750" duration="4446000" />
     </task>
     <task id="LOCAL-00001" summary="Finished q1">
       <created>1585389840287</created>
@@ -636,17 +662,24 @@
       <option name="project" value="LOCAL" />
       <updated>1589004653644</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Q1.1">
+      <created>1589007481623</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1589007481623</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162625000" />
+    <option name="totallyTimeSpent" value="164968000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15975676" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.15975676" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.17634052" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -663,20 +696,20 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.50285065" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5002764" side_tool="true" weight="0.56898516" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.29922992" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.29874572" />
       <window_info anchor="bottom" id="Messages" order="14" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32946378" />
-      <window_info active="true" anchor="right" id="SciView" order="4" visible="true" weight="0.42896628" />
+      <window_info anchor="right" x="0" y="0" width="414" height="818" id="Documentation" order="0" sideWeight="0.5005701" side_tool="true" weight="0.42896628" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
+      <window_info anchor="right" id="SciView" order="5" sideWeight="0.49942988" weight="0.42896628" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="HW3 initiated" />
     <MESSAGE value="HW3 basic perceptron" />
     <MESSAGE value="deleted corona stuff" />
     <MESSAGE value="HW3 basic accuracy test" />
@@ -701,7 +734,8 @@
     <MESSAGE value="Closing plt" />
     <MESSAGE value="submission" />
     <MESSAGE value="HW5 init" />
-    <option name="LAST_COMMIT_MESSAGE" value="HW5 init" />
+    <MESSAGE value="Q1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Q1.1" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_graph.png" />
@@ -808,10 +842,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_C.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/accuracy_per_gamma.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.01.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_10.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1e-05.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.0001.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_0.001.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/HW5/SVM/svm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
+        <state relative-caret-position="216">
+          <caret line="128" column="31" selection-start-line="128" selection-start-column="31" selection-end-line="128" selection-end-column="31" />
           <folding>
             <element signature="e#162#180#0" expanded="true" />
           </folding>
