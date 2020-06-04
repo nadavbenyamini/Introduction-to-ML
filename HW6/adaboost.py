@@ -49,7 +49,7 @@ def get_weak_learner(D, X_train, y_train):
     for direction in [1, -1]:
         for j in range(m):
 
-            # Sorting x and y together by x[j]
+            # Sorting x, y and D together by x[j]
             train_tuples = sorted([(X_train[i][j], y_train[i], D[i]) for i in range(n)],
                                   key=lambda tup: (tup[0], np.random.rand()))
             X_train_j = [tup[0] for tup in train_tuples]
@@ -67,16 +67,12 @@ def get_weak_learner(D, X_train, y_train):
 
             for i in range(n):
                 f = f - direction*y_train_j[i]*D_j[i]
-                if f < 0:
-                    print(j, f, i, y_train_j[i], D_j[i], f + y_train_j[i]*D_j[i])
-                    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-                    return
                 if f < best_f and X_train_j[i] != X_train_j[i + 1]:
                     best_f = f
                     best_theta = (X_train_j[i] + X_train_j[i + 1])/2
                     best_j = j
                     best_direction = direction
-                    print('Best h found: j={}, f={}, theta={}, direction={}'.format(best_j, best_f, best_theta, best_direction))
+                    # print('Best h found: j={}, f={}, theta={}, direction={}'.format(best_j, best_f, best_theta, best_direction))
 
     return best_theta, best_j, best_direction
 
@@ -149,16 +145,14 @@ def question3(data):
     def loss(X, y, hypotheses, alpha_vals):
         n = len(y)
         t = len(hypotheses)
-        l = 0
-        for i in range(n):
-            s = sum(alpha_vals[k] * (activate_h(hypotheses[k], X, i)) for k in range(t))
-            l += np.exp(-y[i] * s)
-        return s / n
+        return sum([np.exp(-y[i] * sum([alpha_vals[k] * activate_h(hypotheses[k], X, i) for k in range(t)])) for i in
+                    range(n)]) / n
+
     questions1_3(data, loss, 'AVG Exponential Loss')
 
 
 def questions1_3(data, loss, title):
-    T = 10
+    T = 80
     (X_train, y_train, X_testt, y_testt, vocab) = data
     hypotheses, alpha_vals = run_adaboost(X_train, y_train, T)
 
@@ -172,11 +166,10 @@ def questions1_3(data, loss, title):
         train_errors.append(loss(X_train, y_train, hypos, alphas))
         testt_errors.append(loss(X_testt, y_testt, hypos, alphas))
 
-    plt.plot(train_errors, color="blue", label='Train')
-    plt.plot(testt_errors, color="red", label='Test')
+    plt.plot(train_errors, color="blue", label='Train', marker='o')
+    plt.plot(testt_errors, color="red", label='Test', marker='o')
     plt.legend()
     plt.xlabel('Iterations')
-    plt.xticks(list(round(x) for x in range(len(hypotheses))))
     plt.ylabel(title)
     plt.show()
 
