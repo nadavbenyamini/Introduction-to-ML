@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44e46c59-2a51-4de5-9774-53d6402cf291" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HW6/adaboost.py" beforeDir="false" afterPath="$PROJECT_DIR$/HW6/adaboost.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/HW6/adaboost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+            <state relative-caret-position="312">
+              <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
               <folding>
                 <element signature="e#163#199#0" expanded="true" />
               </folding>
@@ -72,7 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>calc_acc</find>
       <find>calc_accuracy_multi_labels</find>
       <find>norm</find>
       <find>gradient =</find>
@@ -102,6 +100,7 @@
       <find>MARKED_DIMS</find>
       <find>ht(</find>
       <find>parse_data</find>
+      <find>activate_h</find>
     </findStrings>
     <replaceStrings>
       <replace>y1</replace>
@@ -383,21 +382,7 @@
       <workItem from="1589780058696" duration="1217000" />
       <workItem from="1590736636282" duration="15514000" />
       <workItem from="1591163441229" duration="12650000" />
-      <workItem from="1591186967669" duration="12342000" />
-    </task>
-    <task id="LOCAL-00004" summary="Moved utils out of class">
-      <created>1585408181125</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1585408181125</updated>
-    </task>
-    <task id="LOCAL-00005" summary="part d ready">
-      <created>1585409566313</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1585409566313</updated>
+      <workItem from="1591186967669" duration="17997000" />
     </task>
     <task id="LOCAL-00006" summary="Finished parts a-d">
       <created>1585409984068</created>
@@ -728,11 +713,25 @@
       <option name="project" value="LOCAL" />
       <updated>1591195718621</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added directions to the main function">
+      <created>1591200618077</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1591200618077</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Q1-2-3 Done">
+      <created>1591251488750</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1591251488750</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226403000" />
+    <option name="totallyTimeSpent" value="232058000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1743" y="28" width="1857" height="1018" extended-state="6" />
@@ -755,22 +754,20 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.35917902" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5002764" side_tool="true" weight="0.56898516" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.42987457" />
+      <window_info anchor="bottom" id="Python Console" order="13" visible="true" weight="0.42987457" />
       <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" x="0" y="0" width="414" height="818" id="Documentation" order="0" sideWeight="0.50171036" side_tool="true" weight="0.31011608" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Database" order="4" weight="0.32946378" />
-      <window_info anchor="right" id="SciView" order="5" sideWeight="0.49828961" visible="true" weight="0.23383084" />
+      <window_info active="true" anchor="right" id="SciView" order="5" sideWeight="0.49828961" visible="true" weight="0.39414042" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Q2 without eta" />
-    <MESSAGE value="Skipping eta values that cause overflow" />
     <MESSAGE value="Q1 works" />
     <MESSAGE value="no overflow" />
     <MESSAGE value="Q2 - bad accuracy" />
@@ -794,7 +791,9 @@
     <MESSAGE value="HW6 Q1" />
     <MESSAGE value="HW6 Q1 working" />
     <MESSAGE value="Q2, Q3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Q2, Q3" />
+    <MESSAGE value="Added directions to the main function" />
+    <MESSAGE value="Q1-2-3 Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Q1-2-3 Done" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/HW5/SVM/plots/decision_boundary_linear_100.png">
@@ -947,8 +946,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HW6/adaboost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+        <state relative-caret-position="312">
+          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
           <folding>
             <element signature="e#163#199#0" expanded="true" />
           </folding>
