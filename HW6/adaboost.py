@@ -171,7 +171,7 @@ def questions1_3(data, loss, title):
     plt.legend()
     plt.xlabel('Iterations')
     plt.ylabel(title)
-    plt.show()
+    # plt.show()
 
 
 def main():
